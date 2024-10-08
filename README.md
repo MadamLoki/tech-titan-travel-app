@@ -1,4 +1,4 @@
-# eConcerige web app
+# eConcierge web app
 
 ## Collaborators
 
