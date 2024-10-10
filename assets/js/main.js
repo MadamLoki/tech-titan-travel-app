@@ -40,7 +40,7 @@ async function initCarousel() {
     createCarouselItems(images);
     try {
     // Initialize Bootstrap Carousel with options
-    const carouselInterval = 5000;
+    const carouselInterval = 6000;
     new bootstrap.Carousel(document.getElementById('carouselMain'), {
         interval: carouselInterval,
         pause: 'hover',

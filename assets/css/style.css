@@ -1,19 +1,28 @@
 /* Nav bars require "wrapping" for responsive collapsing and color scheme classes  */
 
 :root {
-
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+/* JourneySync color scheme and Font */
+#JourneySync {
+    color: var(--dark-color);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    padding-inline: 10px;
 }
 
+.bi-compass {
+    font-size: 25px;
+}
+
+
+/* Picture carousel size/image behavior */
 #carouselMain {
     max-height: 800px; /* Adjust this value as needed */
     overflow: hidden;
@@ -28,7 +37,21 @@ body {
     width: 100%;
 }
 
-.navbar {
-    background-color: #000000;
-    color: #ffffff;
+/* Block Quote */
+.text-end {
+    font-style: italic;
+    color: var(--dark-color);
+    padding-right: 40px;
+    margin: 10px;
+}
+
+
+
+/* About article */
+.about-section {
+    background-color: #f8f9fa;  /* A custom light background color */
+}
+
+.about-section h2 {
+    color: #007bff;  /* Bootstrap's primary blue color */
 }
