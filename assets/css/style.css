@@ -1,0 +1,34 @@
+/* Nav bars require "wrapping" for responsive collapsing and color scheme classes  */
+
+:root {
+
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#carouselMain {
+    max-height: 800px; /* Adjust this value as needed */
+    overflow: hidden;
+}
+#carouselMain .carousel-inner {
+    max-height: 800px; /* Should match the carousel's max-height */
+}
+#carouselMain .carousel-item img {
+    object-fit: cover;
+    object-position: bottom;
+    height: 800px; /* Should match the carousel's max-height */
+    width: 100%;
+}
+
+.navbar {
+    background-color: #000000;
+    color: #ffffff;
+}
