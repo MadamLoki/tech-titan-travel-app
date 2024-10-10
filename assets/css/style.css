@@ -23,7 +23,7 @@ body {
 }
 #carouselMain .carousel-item img {
     object-fit: cover;
-    object-position: bottom;
+    object-position: 75% 25%;
     height: 800px; /* Should match the carousel's max-height */
     width: 100%;
 }

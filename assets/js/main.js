@@ -38,12 +38,20 @@ function createCarouselItems(images) {
 async function initCarousel() {
     const images = await fetchRandomCityImage(5);
     createCarouselItems(images);
-
+    try {
+    // Initialize Bootstrap Carousel with options
+    const carouselInterval = 5000;
     new bootstrap.Carousel(document.getElementById('carouselMain'), {
-        interval: 3000,
+        interval: carouselInterval,
+        pause: 'hover',
+        wrap: true,
     });
-    console.log('Carousel initialized!');
+    console.log('Carousel initialized!'); 
+        } catch (error) {
+            console.error('Error initializing Carousel:', error);
+        }
 }
+
 
 window.addEventListener('DOMContentLoaded', initCarousel);
 
