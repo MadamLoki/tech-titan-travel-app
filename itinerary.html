@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itinerary Creation</title>
+</head>
+
+<body>
+    <header>
+        <h1><strong>Itinerary Planner</strong></h1>
+
+    </header>
+    <main>
+        <form id="Itinerary form">
+            <div>
+                <label for="city">Select a City:</label>
+                <select id="city" name="city" onchange="showAttractions()">
+                    <option value="new_york">New York</option>
+                    <option value="denver">Denver</option>
+                    <option value="washington_dc">Washington D.C.</option>
+                    <option value="miami">Miami</option>
+                    <option value="san_diego">San Diego</option>
+                    <option value="las_vegas">Las Vegas</option>
+                    <option value="boston">Boston</option>
+                    <option value="nashville">Nashville</option>
+                    <option value="new_orleans">New Orleans</option>
+                    <option value="honolulu">Honolulu</option>
+                </select>
+            </div>
+
+            <h2>Attractions</h2>
+            <ul id="attractionList" class="attractions">
+                //link to attractions will be dynamically
+            </ul>
+
+
+
+            <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" required>
+            </div>
+
+
+            <button type="button" onclick="addToItinerary()">Add to Itinerary</button>
+
+            <div class="submission"> <input type="submit" value="Submit"> </div>
+
+
+        </form>
+
+    </main>
+
+
+</body>
+
+<script src="itinerary.js"></script>
