@@ -1,7 +1,7 @@
 /* Nav bars require "wrapping" for responsive collapsing and color scheme classes  */
 
 :root {
-    --primary-color: #007bff;
+    --primary-color: #3a7cc4;
     --secondary-color: #6c757d;
     --dark-color: #343a40;
     --secondary-dark-color: #495057;
@@ -67,7 +67,7 @@
 }
 
 .about-section h2 {
-    color: #007bff;  /* Bootstrap's primary blue color */
+    color: var(--primary-color);  /* Bootstrap's primary blue color */
 }
 
 /* Dark Mode styles*/
