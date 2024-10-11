@@ -1,31 +1,40 @@
 /* Nav bars require "wrapping" for responsive collapsing and color scheme classes  */
 
 :root {
-    --primary-color: #007bff;
+    --primary-color: #3a7cc4;
     --secondary-color: #6c757d;
     --dark-color: #343a40;
-    --light-color: #f8f9fa;
+    --secondary-dark-color: #495057;
+    --light-color: #c2c2c2;
     --success-color: #28a745;
     --info-color: #17a2b8;
 }
 
 /* JourneySync color scheme and Font */
-#JourneySync {
+.header-brand {
     color: var(--dark-color);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 25px;
     padding-inline: 10px;
+    margin-top: 10px;
 }
 
-.bi-compass {
-    font-size: 1.2em;
-    background-color: transparent;
+.container-fluid {
+    background-color: var(--light-color);
 }
 
-.dropdown-menu {
-    background-color: var(--dark-color);
-    color: var(--light-color);
+.lead {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: var(--secondary-color);
 }
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 /* Picture carousel size/image behavior */
 #carouselMain {
@@ -37,8 +46,8 @@
 }
 #carouselMain .carousel-item img {
     object-fit: cover;
-    object-position: 75% 25%;
-    height: 800px; /* Should match the carousel's max-height */
+    object-position: 30% 70%;
+    height: 600px; /* Should match the carousel's max-height */
     width: 100%;
 }
 
@@ -58,38 +67,43 @@
 }
 
 .about-section h2 {
-    color: #007bff;  /* Bootstrap's primary blue color */
+    color: var(--primary-color);  /* Bootstrap's primary blue color */
 }
 
 /* Dark Mode styles*/
+
+.dark-mode .scope {
+    background-color: var(--dark-color);
+}
+
 /* Header */
-.dark-mode .nav-item {
-    background-color: var(--dark-color);
+.dark-mode .nav-item a {
     color: var(--light-color);
 }
 
-.dark-mode #JourneySync {
-    color: var(--light-color);
-}
-
-.dark-mode .bi-compass {
-    color: var(--light-color);
-}
-
-/* Nav bar */
-.dark-mode .navbar {
+.dark-mode .container-fluid {
     background-color: var(--dark-color);
 }
 
-
-/* About Section */
-.dark-mode .about-section {
-    background-color: var(--dark-color);
-    color: var(--light-color);
+.dark-mode .container-fluid .header-brand {
+    color: var(--info-color);
 }
 
+.dark-mode .lead {
+    color: var(--light-color);
+}
 
 /*Dark Block Quote */
 .dark-mode .text-end {
+    color: var(--light-color);
+}
+
+/* Dark About section */
+.dark-mode .about-section h2 {
+    color: var(--info-color);
+}
+
+.dark-mode .about-section {
+    background-color: var(--secondary-dark-color);
     color: var(--light-color);
 }
