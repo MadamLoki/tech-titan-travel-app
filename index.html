@@ -14,59 +14,65 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" alt="navigation bar">
-        <div class="container-fluid">
-            <a id="JourneySync" class="navbar-brand" href="#"><i class="bi bi-compass"></i> JourneySync</a>
-            <button class="navbar-toggler" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#carouselMain">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./city.html">Destinations</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Something Here</a>
-                    </li>
-                <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button">
-                    <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
-                </button>
+    <main class="scope">
+        <header>
+            <div class="container-fluid">
+                <div class="flex">
+                    <div class="modal-header">
+                        <h1 class="header-brand"><i class="bi bi-compass"></i> JourneySync</h1>
+                        <p class="lead">Plan your next adventure with us!</p>
+                    </div>
+                </div>
+                <nav class="navbar navbar-expand-lg" alt="navigation bar">
+                    <button class="navbar-toggler" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#carouselMain">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./city.html">Destinations</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Something Here</a>
+                            </li>
+                            <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button">
+                                <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
+                            </button>
+                    </div>
             </div>
+            </nav>
+        </header>
+
+        <div id="carouselMain" class="carousel slide" data-bs-ride="carouselInterval">
+            <div class="carousel-inner">
+                <!-- Carousel images dynamically added here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-    </nav>
 
-    <div id="carouselMain" class="carousel slide" data-bs-ride="carouselInterval">
-        <div class="carousel-inner">
-            <!-- Carousel images dynamically added here -->
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+        <figure class="text-end">
+            <blockquote class="blockquote">
+                <p>“A person susceptible to ‘wanderlust’ is not so much addicted to movement as committed to
+                    transformation.”</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                Pico Iyer <cite title="Good Reads"><i class="bi bi-book"></i></cite>
+            </figcaption>
+        </figure>
 
-    <figure class="text-end">
-        <blockquote class="blockquote">
-            <p>“A person susceptible to ‘wanderlust’ is not so much addicted to movement as committed to
-                transformation.”</p>
-        </blockquote>
-        <figcaption class="blockquote-footer">
-            Pico Iyer <cite title="Good Reads"><i class="bi bi-book"></i></cite>
-        </figcaption>
-    </figure>
-
-
-    <main class="container mt-5">
-        <article href="#about" class="about-section p-4 rounded shadow">
+        <article href="#about" class="container about-section p-4 rounded shadow">
             <h2 class="text-center mb-4">About the Team</h2>
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -89,23 +95,15 @@
                 </div>
             </div>
         </article>
+
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container text-center">
+                <p class="mb-0">&copy; JourneySync</p>
+            </div>
+        </footer>
+
     </main>
-
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-0">&copy; JourneySync</p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
+    
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/logic.js"></script>
     <script src="./assets/js/cities.js"></script>
