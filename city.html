@@ -9,36 +9,45 @@
     <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <button>
-            <a class="navbar-brand" href="#">JourneySync</a>
-        </button>
+    <nav class="navbar navbar-expand-lg" alt="navigation bar">
+        <div class="container-fluid">
+            <a id="JourneySync" class="navbar-brand" href="#"><i class="bi bi-compass"></i> JourneySync</a>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#carouselMain">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./city.html">Destinations</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Something Here</a>
+                    </li>
+                <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button">
+                    <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
+                </button>
+            </div>
+        </div>
     </nav>
 
-    <div class="cityCarousel">
-        <!-- City carousel will be dynamically added here -->
-        <div id="carouselCity" class="carousel slide">
-            <div class="carousel-inner">
-                <!-- Carousel images dynamically added here -->
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+    <div id="carouselMain" class="carousel slide" data-bs-ride="carouselInterval">
+        <div class="carousel-inner">
+            <!-- Carousel images dynamically added here -->
         </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-    </div>     
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
     <main class="container">
         <div id="cityContent">

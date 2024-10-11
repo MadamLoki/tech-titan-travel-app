@@ -37,8 +37,8 @@
 }
 #carouselMain .carousel-item img {
     object-fit: cover;
-    object-position: 75% 25%;
-    height: 800px; /* Should match the carousel's max-height */
+    object-position: 30% 70%;
+    height: 600px; /* Should match the carousel's max-height */
     width: 100%;
 }
 
@@ -88,8 +88,20 @@
     color: var(--light-color);
 }
 
+.dark-mode body {
+    background-color: var(--dark-color);
+}
 
 /*Dark Block Quote */
 .dark-mode .text-end {
+    color: var(--light-color);
+}
+
+.dark-mode .about-section h2 {
+    color: var(--info-color);
+}
+
+.dark-mode .about-section {
+    background-color: var(--dark-color);
     color: var(--light-color);
 }

@@ -36,7 +36,7 @@ function createCarouselItems(images) {
 
 // Initialize carousel
 async function initCarousel() {
-    const images = await fetchRandomCityImage(5);
+    const images = await fetchRandomCityImage(10);
     createCarouselItems(images);
     try {
     // Initialize Bootstrap Carousel with options
