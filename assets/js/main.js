@@ -59,5 +59,5 @@ window.addEventListener('DOMContentLoaded', initCarousel);
 const myCarousel = document.getElementById('carouselMain');
 
 myCarousel.addEventListener('slide.bs.carousel', (event) => {
-    console.log('Slide event fired! Moving to slide:', event.to);
+    /* console.log('Slide event fired! Moving to slide:', event.to); */
 });

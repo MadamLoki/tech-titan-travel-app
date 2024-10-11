@@ -18,9 +18,14 @@
 }
 
 .bi-compass {
-    font-size: 25px;
+    font-size: 1.2em;
+    background-color: transparent;
 }
 
+.dropdown-menu {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
 
 /* Picture carousel size/image behavior */
 #carouselMain {
@@ -49,9 +54,42 @@
 
 /* About article */
 .about-section {
-    background-color: #f8f9fa;  /* A custom light background color */
+    background-color: var(--light-color);  /* A custom light background color */
 }
 
 .about-section h2 {
     color: #007bff;  /* Bootstrap's primary blue color */
+}
+
+/* Dark Mode styles*/
+/* Header */
+.dark-mode .nav-item {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.dark-mode #JourneySync {
+    color: var(--light-color);
+}
+
+.dark-mode .bi-compass {
+    color: var(--light-color);
+}
+
+/* Nav bar */
+.dark-mode .navbar {
+    background-color: var(--dark-color);
+}
+
+
+/* About Section */
+.dark-mode .about-section {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+
+/*Dark Block Quote */
+.dark-mode .text-end {
+    color: var(--light-color);
 }
