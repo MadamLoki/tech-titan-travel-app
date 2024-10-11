@@ -14,26 +14,15 @@
     </header>
     <main>
         <form id="Itinerary form">
-            <div>
-                <label for="city">Select a City:</label>
-                <select id="city" name="city" onchange="showAttractions()">
-                    <option value="new_york">New York</option>
-                    <option value="denver">Denver</option>
-                    <option value="washington_dc">Washington D.C.</option>
-                    <option value="miami">Miami</option>
-                    <option value="san_diego">San Diego</option>
-                    <option value="las_vegas">Las Vegas</option>
-                    <option value="boston">Boston</option>
-                    <option value="nashville">Nashville</option>
-                    <option value="new_orleans">New Orleans</option>
-                    <option value="honolulu">Honolulu</option>
-                </select>
+            <div class = "city-list " id="cityList">
+            //city list will display here from javascript
             </div>
-
-            <h2>Attractions</h2>
-            <ul id="attractionList" class="attractions">
-                //link to attractions will be dynamically
-            </ul>
+           
+            //attraction display
+          <div id="attractionsDiv" class="hidden">
+            <h3> Attractions in <span id="cityName"></span></h3>
+            <ul id="attractionsList"></ul>
+          </div>
 
 
 
@@ -58,6 +47,26 @@
     </main>
 
 
+    <script src="itinerary.js"></script>
 </body>
+</html>
 
-<script src="itinerary.js"></script>
+
+
+
+
+<div>
+    <label for="city">Select a City:</label>
+    <select id="city" name="city" onchange="showAttractions()">
+        <option value="new_york">New York</option>
+        <option value="denver">Denver</option>
+        <option value="washington_dc">Washington D.C.</option>
+        <option value="miami">Miami</option>
+        <option value="san_diego">San Diego</option>
+        <option value="las_vegas">Las Vegas</option>
+        <option value="boston">Boston</option>
+        <option value="nashville">Nashville</option>
+        <option value="new_orleans">New Orleans</option>
+        <option value="honolulu">Honolulu</option>
+    </select>
+</div>
