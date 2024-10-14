@@ -58,11 +58,12 @@
     <script>
         const budgets = {};
         const expenses = {};
-
-        function createBudget() {
+    
+        function createBudget(budgets) {
             const tripName = document.getElementById('tripName').value;
             const totalAmount = parseFloat(document.getElementById('totalAmount').value);
             const currency = document.getElementById('currency').value;
+            
 
             budgets[tripName] = {
                 totalAmount: totalAmount,
@@ -73,6 +74,8 @@
 
             alert(`Budget for "${tripName}" created successfully!`);
             clearInputs();
+
+            localStorage.setItem('budgets')
         }
 
         function addExpense() {
