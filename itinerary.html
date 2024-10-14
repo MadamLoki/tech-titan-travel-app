@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,20 +28,26 @@
             background-color: var(--background-color);
             color: var(--text-color);
         }
+
         select {
             padding: 10px;
             font-size: 16px;
         }
-        #info, #itinerary {
+
+        #info,
+        #itinerary {
             margin-top: 20px;
             border: 1px solid var(--border-color);
             padding: 15px;
             border-radius: 5px;
             background-color: var(--background-color);
         }
-        h2, h3 {
+
+        h2,
+        h3 {
             color: var(--text-color);
         }
+
         .toggle-button {
             margin: 20px 0;
             padding: 10px;
@@ -50,14 +57,17 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .attraction-list {
             margin-top: 10px;
         }
+
         .date-time {
             margin-left: 10px;
         }
     </style>
 </head>
+
 <body>
     <h1>Select a City</h1>
     <button class="toggle-button" id="toggleButton">Switch to Dark Mode</button>
@@ -77,7 +87,7 @@
 
     <div id="info"></div>
     <button class="toggle-button" id="saveButton" style="display: none;">Save Selected Attractions</button>
-    
+
     <h2>Your Itinerary</h2>
     <div id="itinerary"></div>
 
@@ -270,12 +280,12 @@
         const itineraryDiv = document.getElementById("itinerary");
         const saveButton = document.getElementById("saveButton");
 
-        citySelect.addEventListener("change", function() {
+        citySelect.addEventListener("change", function () {
             const selectedCity = this.value;
             const cityInfo = cities.find(city => city.name === selectedCity);
 
             if (cityInfo) {
-                const attractionsList = cityInfo.attractions.map(attraction => 
+                const attractionsList = cityInfo.attractions.map(attraction =>
                     `<label>
                         <input type="checkbox" class="attraction-checkbox" value="${attraction.name}"> 
                         <a href="${attraction.link}" target="_blank">${attraction.name}</a>
@@ -322,7 +332,7 @@
             if (selectedAttractions.length > 0) {
                 // Update Itinerary Section
                 itineraryDiv.innerHTML = "<h3>Your Selected Itinerary</h3>";
-                const itineraryList = selectedAttractions.map(attr => 
+                const itineraryList = selectedAttractions.map(attr =>
                     `<p>${attr.name} on ${attr.date} at ${attr.time}</p>`
                 ).join('');
                 itineraryDiv.innerHTML += itineraryList;
@@ -331,14 +341,26 @@
             }
         });
 
-        const toggleButton = document.getElementById("toggleButton");
-        let isDarkMode = false;
+     
+        function saveItinerary(itineraryDiv) {
+            localStorage.setItem('itinerary', JSON.stringify(itineraryDiv));
+        }
 
-        toggleButton.addEventListener("click", () => {
-            isDarkMode = !isDarkMode;
-            document.documentElement.setAttribute("data-theme", isDarkMode ? "dark" : "light");
-            toggleButton.textContent = isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode";
-        });
+        function loadItinerary() {
+            const savedItinerary = localStorage.getItem('itinerary');
+            if (savedItinerary) {
+                return JSON.parse(savedItinerary);
+            }
+            return null;
+        }
+
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'itinerary') {
+              console.log('Itinerary updated in another tab:', JSON.parse(event.newValue));
+              updateItineraryUI(JSON.parse(event.newValue));  // Custom function to update UI
+            }
+          });
     </script>
 </body>
+
 </html>
