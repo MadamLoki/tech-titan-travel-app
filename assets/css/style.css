@@ -38,7 +38,7 @@
 
 /* Picture carousel size/image behavior */
 #carouselMain {
-    max-height: 800px; /* Adjust this value as needed */
+    max-height: 500px; /* Adjust this value as needed */
     overflow: hidden;
 }
 #carouselMain .carousel-inner {

@@ -1,11 +1,20 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+:root {
+    --primary-color: #3a7cc4;
+    --secondary-color: #6c757d;
+    --dark-color: #343a40;
+    --secondary-dark-color: #495057;
+    --light-color: #c2c2c2;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
 }
+
 select {
     padding: 10px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
 }
+
 #info {
     margin-top: 20px;
     border: 1px solid #ccc;
@@ -15,4 +24,30 @@ select {
 }
 h2, h3 {
     color: #333;
+}
+
+#info, #itinerary {
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+}
+h2, h3 {
+    color: var(--text-color);
+}
+.toggle-button {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.attraction-list {
+    margin-top: 10px;
+}
+.date-time {
+    margin-left: 10px;
 }
