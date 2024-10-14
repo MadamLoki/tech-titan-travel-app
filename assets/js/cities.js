@@ -232,11 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cityInfo.innerHTML = "";
             saveButton.style.display = "none"; // Hide save button
         }
-        if (selectedCityName !== "Select a Location") {
-            updateAttractionCarousel(selectedCityName);
-        } else {
-            document.querySelector('#attractionCarousel .carousel-aside').innerHTML = '';
-        }
     });
 
     saveButton.addEventListener('click', () => {
