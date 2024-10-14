@@ -8,46 +8,75 @@
     --info-color: #17a2b8;
 }
 
-select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+/* JourneySync color scheme and Font */
+/* City selection and itinerary */
+.cityDropdown {
+    width: 20%;
+    padding: auto;
+    margin-bottom: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 0.25rem;
+    font-size: large;
 }
 
-#info {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-h2, h3 {
-    color: #333;
-}
-
-#info, #itinerary {
-    margin-top: 20px;
-    border: 1px solid var(--border-color);
-    padding: 15px;
-    border-radius: 5px;
-    background-color: var(--background-color);
-}
-h2, h3 {
-    color: var(--text-color);
-}
-.toggle-button {
-    margin: 20px 0;
-    padding: 10px;
-    background-color: var(--button-background);
-    color: var(--button-text-color);
-    border: none;
-    border-radius: 5px;
+/* inside the form stuff */
+.form-check-input {
+    margin: 5px 10px;
+    width: 30px;
+    height: 20px;
     cursor: pointer;
 }
-.attraction-list {
-    margin-top: 10px;
+
+.containerAttraction {
+    font-size: 18px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-.date-time {
-    margin-left: 10px;
+
+.time-date {
+    margin-inline: 10px;
+    padding-inline: 10px;
+}
+
+/* Toggle button */
+
+.toggle-button {
+    background-color: var(--light-color);
+    border: none;
+    padding: 5px;
+    margin: 20px 10px;
+    border-radius: 0.25rem;
+    width: auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.itineraryDiv {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode styles */
+
+.dark-mode .cityDropdown {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+
+}
+
+.dark-mode .itineraryDiv {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
 }

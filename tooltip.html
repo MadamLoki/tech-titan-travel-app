@@ -74,8 +74,6 @@
 
             alert(`Budget for "${tripName}" created successfully!`);
             clearInputs();
-
-            localStorage.setItem('budgets')
         }
 
         function addExpense() {
@@ -92,7 +90,7 @@
             } else {
                 alert("Budget not found. Please create a budget first.");
             }
-        }
+        } 
 
         function adjustBudget() {
             const tripName = document.getElementById('tripName').value;

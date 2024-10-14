@@ -1,12 +1,3 @@
-// caursel array for cities page
-async function getCityImage(city) {
-    // Fetch image from Unsplash API
-    const response = await fetch(`${UNSPLASH_API_URL}?query=${city}+city&client_id=${UNSPLASH_ACCESS_KEY}`);
-    const data = await response.json();
-    const image = data.results[0].urls.regular;
-    return image;
-}
-
 // Top 10 US cities data
 const cities = [
     {
@@ -164,7 +155,7 @@ const cities = [
             { name: "Bayside Marketplace", link: "https://baysidemarketplace.com/" },
             { name: "Miami Seaquarium", link: "https://www.miamiseaquarium.com/" },
             { name: "Miami Design District", link: "https://www.miamidesigndistrict.net/" },
-            { name: "Zoo Miami", link: "https://www.zoomiami.org/" },
+            { name: "Miami Zoo", link: "https://www.zoomiami.org/" },
             { name: "Jungle Island", link: "https://www.jungleisland.com/" },
             { name: "Everglades National Park", link: "https://www.nps.gov/ever/index.htm" }
         ],
@@ -194,6 +185,8 @@ const cities = [
 document.addEventListener('DOMContentLoaded', () => {
     const cityDropdown = document.getElementById("citySelect");
     const cityInfo = document.getElementById("cityInfo");
+    const saveButton = document.getElementById('saveButton');
+    const itineraryDiv = document.getElementById('itineraryDiv');
 
     // Populate city dropdown
     cities.forEach(city => {
@@ -207,60 +200,65 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedCityName = event.target.value;
         const selectedCity = cities.find(city => city.name === selectedCityName);
     
-    if (selectedCity) {
-        const selectedCityData = {
-            name: selectedCity.name,
-            bestTimeToVisit: selectedCity.bestTimeToVisit,
-            fact: selectedCity.fact,
-            attractions: selectedCity.attractions
-        };
-        cityInfo.innerHTML = `
-            <h2>${selectedCityData.name}</h2>
-            <p><strong>Best Time to Visit:</strong> ${selectedCityData.bestTimeToVisit}</p>
-            <p><strong>Fun Fact:</strong> ${selectedCityData.fact}</p>
-            <h3>Attractions:</h3>
-            <form id = "attractionsForm">
-                ${selectedCityData.attractions.map(attraction => ` 
-                    <div class="attraction">
-                        <input class = "form-check-input" type = "checkbox" value = "${attraction.name}" id = "${attraction.name}">
-                        <label class = "form-check-label" for = "${attraction.name}">${attraction.name}</label>
-                        <input type="date" class="date-time" placeholder="Date">
-                        <input type="time" class="date-time" placeholder="Time">
-                        ${attraction.link ? `<a href="${attraction.link}" target="_blank">More Info</a>` : ""}
-                    </div>
-            `).join('')}
-            </form>`;
-                saveButton.style.display = "block"; // Show save button
-            } else {
-                cityInfo.innerHTML = "";
-                saveButton.style.display = "none"; // Hide save button
-            }
-
+        if (selectedCity) { 
+            const selectedCityData = {
+                name: selectedCity.name,
+                bestTimeToVisit: selectedCity.bestTimeToVisit,
+                fact: selectedCity.fact,
+                attractions: selectedCity.attractions
+            };
+            cityInfo.innerHTML = `
+                <h2>${selectedCityData.name}</h2>
+                <p><strong>Best Time to Visit:</strong> ${selectedCityData.bestTimeToVisit}</p>
+                <p><strong>Fun Fact:</strong> ${selectedCityData.fact}</p>
+                <h3>Attractions:</h3>
+                <form id="attractionsForm">
+                    ${selectedCityData.attractions.map(attraction => `
+                        <div class="containerAttraction"> 
+                            <div class="attraction">
+                                <input class="form-check-input" type="checkbox" value="${attraction.name}" id="${attraction.name}">
+                                <label class="form-check-label" for="${attraction.name}">${attraction.name}</label>
+                            </div>
+                            <div class="time-date">
+                                <input type="date" placeholder="Date">
+                                <input type="time" placeholder="Time">
+                                ${attraction.link ? `<a href="${attraction.link}" target="_blank">More Info</a>` : ""}
+                            </div>
+                        </div>
+                    `).join('')}
+                </form>`;
+            saveButton.style.display = "block"; // Show save button
+        } else {
+            cityInfo.innerHTML = "";
+            saveButton.style.display = "none"; // Hide save button
+        }
+        if (selectedCityName !== "Select a Location") {
+            updateAttractionCarousel(selectedCityName);
+        } else {
+            document.querySelector('#attractionCarousel .carousel-aside').innerHTML = '';
+        }
     });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const saveButton = document.getElementById('saveButton');
-    const itineraryDiv = document.getElementById('itineraryDiv');
 
     saveButton.addEventListener('click', () => {
-        const selectedCity = document.getElementById('citySelect').value;
+        const selectedCity = cityDropdown.value;
         const selectedAttractions = [];
         const checkboxes = document.querySelectorAll('#cityInfo input[type="checkbox"]:checked');
 
         checkboxes.forEach(checkbox => {
-            const attractionDiv = checkbox.closest('.attraction');
-            const dateInput = attractionDiv.querySelector('input[type="date"]');
-            const timeInput = attractionDiv.querySelector('input[type="time"]');
-            const date = dateInput.value;
-            const time = timeInput.value;
+            const containerAttraction = checkbox.closest('.containerAttraction');
+            if (containerAttraction) {
+                const dateInput = containerAttraction.querySelector('input[type="date"]');
+                const timeInput = containerAttraction.querySelector('input[type="time"]');
+                const date = dateInput ? dateInput.value : '';
+                const time = timeInput ? timeInput.value : '';
 
-            if (date && time) {
-                selectedAttractions.push({
-                    name: checkbox.value,
-                    date: date,
-                    time: time
-                });
+                if (date && time) {
+                    selectedAttractions.push({
+                        name: checkbox.value,
+                        date: date,
+                        time: time
+                    });
+                }
             }
         });
 
@@ -271,12 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ).join('');
             itineraryDiv.innerHTML += itineraryList;
 
-            localStorage.setItem('savedItinerary', { city: selectedCity, attractions: selectedAttractions})
+            localStorage.setItem('savedItinerary', JSON.stringify({ city: selectedCity, attractions: selectedAttractions }));
         } else {
             alert("Please select at least one attraction and set a date and time for it.");
         }
     });
 });
-
-// Get attraction image and display it
 
