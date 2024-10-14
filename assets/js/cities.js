@@ -1,4 +1,4 @@
-// Top 10 US cities data
+// caursel array for cities page
 async function getCityImage(city) {
     // Fetch image from Unsplash API
     const response = await fetch(`${UNSPLASH_API_URL}?query=${city}+city&client_id=${UNSPLASH_ACCESS_KEY}`);
@@ -7,6 +7,7 @@ async function getCityImage(city) {
     return image;
 }
 
+// Top 10 US cities data
 const cities = [
     {
         name: "New York",
@@ -277,72 +278,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Get attraction image and display it
 
-/* 
-// Additional code for handling itinerary and save button
-const citySelect = document.getElementById("citySelect");
-const infoDiv = document.getElementById("info");
-const itineraryDiv = document.getElementById("itinerary");
-const saveButton = document.getElementById("saveButton");
-
-citySelect.addEventListener("change", function() {
-    const selectedCity = this.value;
-    const cityInfo = cities.find(city => city.name === selectedCity);
-
-    if (cityInfo) {
-        const attractionsList = cityInfo.attractions.map(attraction => `
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="${attraction.name}" id="${attraction.name}">
-                <label class="form-check-label" for="${attraction.name}">
-                    ${attraction.name}
-                </label>
-            </div>
-        `).join('');
-        infoDiv.innerHTML = `
-            <h2>${cityInfo.name}</h2>
-            <p><strong>Best Time to Visit:</strong> ${cityInfo.bestTimeToVisit}</p>
-            <p><strong>Fun Fact:</strong> ${cityInfo.fact}</p>
-            <h3>Attractions:</h3>
-            <form id="attractionsForm">
-                ${attractionsList}
-            </form>`;
-    } else {
-        infoDiv.innerHTML = "";
-    }
-});
-
-
-
-saveButton.addEventListener("click", () => {
-    const selectedAttractions = [];
-    const checkboxes = document.querySelectorAll('.attraction-checkbox:checked');
-
-    checkboxes.forEach(checkbox => {
-        const dateInput = checkbox.nextElementSibling.nextElementSibling; // Get the date input
-        const timeInput = checkbox.nextElementSibling.nextElementSibling.nextElementSibling; // Get the time input
-        const date = dateInput.value;
-        const time = timeInput.value;
-
-        if (date && time) {
-            selectedAttractions.push({
-                name: checkbox.value,
-                date: date,
-                time: time
-            });
-        }
-        console.log("selected attractions", selectedAttractions);
-    });
-
-    if (selectedAttractions.length > 0) {
-        // Update Itinerary Section
-        itineraryDiv.innerHTML = "<h3>Your Selected Itinerary</h3>";
-        const itineraryList = selectedAttractions.map(attr => 
-            `<p>${attr.name} on ${attr.date} at ${attr.time}</p>`
-        ).join('');
-        itineraryDiv.innerHTML += itineraryList;
-        console.log("Saved itinerary:", { city: selectedCity, attractions: selectedAttractions });
-    } else {
-        alert("Please select at least one attraction and set a date and time for it.");
-    }
-});
- */
