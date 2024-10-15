@@ -37,9 +37,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Function to prompt user for their name and email
 function promptUser() {
+
     const firstName = prompt("Please enter your first name:");
+    if (firstName === null) {
+        alert("You must enter your first name to continue.");
+        return;
+    }
+
     const lastName = prompt("Please enter your last name:");
+    if (lastName === null) {
+        alert("You must enter your last name to continue.");
+        return;
+    }
+
     const email = prompt("Please enter your email:");
+    if (email === null) {
+        alert("You must enter your email to continue.");
+        return;
+    }
+
+    const confirmInfo = confirm(`Is this information correct?\nName: ${firstName} ${lastName}\nEmail: ${email}`);
+    if (confirmInfo) {
+        alert("Thank you! Your information has been saved.");
+    } else {
+        alert("Please enter your information again.");
+    }
 
     if (firstName && lastName && email) {
         alert(`Thank you, ${firstName} ${lastName}. Your email is ${email}.`);

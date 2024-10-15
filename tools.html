@@ -83,7 +83,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Trip Name</h5>
-                            <p class="card-text" id="tripName">Trip to Paris</p>
+                            <input type="text" id="tripName" required>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Total Budget</h5>
-                            <p class="card-text" id="totalBudget">$</p>
+                            <input type="number" id="expenseAmount" required>
+                            <button onclick="createBudget()">Create Budget</button>
                         </div>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Currency</h5>
-                            <p class="card-text" id="currency">USD</p>
+                            <input type="text" id="currency" required> <!-- Can we make this a dropdown menu? -->
                         </div>
                     </div>
                 </div>
@@ -117,6 +118,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Expenses</h5>
+                            <input type="text" id="expenseCategory" required> <button onclick="addExpense()">Add Expense</button>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
