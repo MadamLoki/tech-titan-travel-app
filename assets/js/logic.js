@@ -34,3 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedMode = localStorage.getItem('mode') || 'light';
     applyMode(savedMode);
 });
+
+// Function to prompt user for their name and email
+function promptUser() {
+    const firstName = prompt("Please enter your first name:");
+    const lastName = prompt("Please enter your last name:");
+    const email = prompt("Please enter your email:");
+
+    if (firstName && lastName && email) {
+        alert(`Thank you, ${firstName} ${lastName}. Your email is ${email}.`);
+    } else {
+        alert("All fields are required!");
+    }
+}

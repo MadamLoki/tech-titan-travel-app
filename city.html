@@ -5,47 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JourneySync - City Details</title>
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="./assets/css/style.css" rel="stylesheet">
     <link href="./assets/css/itinerary.css" rel="stylesheet">
 </head>
 
 <body>
     <main class="scope">
+        <!-- Header Section -->
         <header>
             <div class="container-fluid">
-                <div class="flex">
+                <div class="d-flex justify-content-between align-items-center">
                     <div class="modal-header">
                         <h1 class="header-brand"><i class="bi bi-compass"></i> JourneySync</h1>
                         <p class="lead">Plan your next adventure with us!</p>
                     </div>
                 </div>
-                <nav class="navbar navbar-expand-lg" alt="navigation bar">
-                    <button class="navbar-toggler" type="button">
+                <!-- Navigation Bar -->
+                <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="./index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./city.html">Destinations</a>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Something Here</a>
-                            </li>
-                            <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button">
-                                <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
-                            </button>
+                            <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./city.html">Destinations</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/#about">About Us</a></li>
+                        </ul>
+                        <!-- Dark Mode Toggle Button -->
+                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button" aria-label="Toggle dark mode">
+                            <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
+                        </button>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </header>
 
+        <!-- Main Carousel -->
         <div id="carouselMain" class="carousel slide" data-bs-ride="carouselInterval">
             <div class="carousel-inner">
                 <!-- Carousel images dynamically added here -->
@@ -60,46 +62,51 @@
             </button>
         </div>
 
+        <!-- Quote Section -->
         <figure class="text-end">
             <blockquote class="blockquote">
-                <p>“A person susceptible to ‘wanderlust’ is not so much addicted to movement as committed to
-                    transformation.”</p>
+                <p id="quote" class="travel-quote"></p>
             </blockquote>
-            <figcaption class="blockquote-footer">
-                Pico Iyer <cite title="Good Reads"><i class="bi bi-book"></i></cite>
+            <figcaption id="author" class="blockquote-footer">
+                <cite title="Good Reads"><i class="bi bi-book"></i>
             </figcaption>
         </figure>
-    <div class="cityContentContainer">
-        <article class="containerCity">
-            <div id="cityContent" class="container about-section p-4 rounded shadow">
-                <!-- City details will be dynamically added here -->
-                <h1>Popular Cities in the United States</h1>
-                <select id="citySelect" class="cityDropdown">
-                    <option selected>Select a Location</option>
-                </select>
+        
+        <!-- City Content Section -->
+        <div class="cityContentContainer">
+            <article class="containerCity">
+                <div id="cityContent" class="container about-section p-4 rounded shadow">
+                    <!-- City details will be dynamically added here -->
+                    <h1>Popular Cities in the United States</h1>
+                    <select id="citySelect" class="cityDropdown">
+                        <option selected>Select a Location</option>
+                    </select>
 
-                <div id="cityInfo"></div>
-                <button class="toggle-button" id="saveButton" style="display: none;">Save Selected Attractions</button>
+                    <div id="cityInfo"></div>
+                    <button class="toggle-button" id="saveButton" style="display: none;">Save Selected Attractions</button>
 
-                <h2>Your Itinerary</h2>
-                <div id="itineraryDiv" class="itineraryDiv"></div>
-            </div>
-        </article>
-    </div>
+                    <h2>Your Itinerary</h2>
+                    <div id="itineraryDiv" class="itineraryDiv"></div>
+                </div>
+            </article>
+        </div>
 
+        <!-- Footer -->
         <footer class="bg-dark text-white py-4 mt-5">
             <div class="container text-center">
-                <p class="mb-0">&copy; JourneySync</p>
+                <p class="mb-0">&copy; JourneySync - Tech Titans</p>
             </div>
         </footer>
 
     </main>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/logic.js"></script>
     <script src="./assets/js/cities.js"></script>
-    <script src="./assets/js/form.js"></script>
+    <script src="./assets/js/quote.js"></script>
 </body>
 
 </html>
