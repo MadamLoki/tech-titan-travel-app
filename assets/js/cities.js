@@ -199,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
     cityDropdown.addEventListener('change', (event) => {
         const selectedCityName = event.target.value;
         const selectedCity = cities.find(city => city.name === selectedCityName);
-    
-        if (selectedCity) { 
+
+        if (selectedCity) {
             const selectedCityData = {
                 name: selectedCity.name,
                 bestTimeToVisit: selectedCity.bestTimeToVisit,
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (selectedAttractions.length > 0) {
             itineraryDiv.innerHTML = `<h3>Your Selected Itinerary</h3>`;
-            const itineraryList = selectedAttractions.map(attr => 
+            const itineraryList = selectedAttractions.map(attr =>
                 `<p>${attr.name} on ${attr.date} at ${attr.time}</p>`
             ).join('');
             itineraryDiv.innerHTML += itineraryList;
@@ -274,5 +274,57 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Please select at least one attraction and set a date and time for it.");
         }
     });
+    //load itinerary from local storage and update the UI on page load
+    function loadItinerary() {
+        const savedItinerary = localStorage.getItem('savedItinerary');
+        if (savedItinerary) {
+            const itinerary = JSON.parse(savedItinerary);
+            cityDropdown.value = itinerary.city;
+            itineraryDiv.innerHTML = `<h3>Your Selected Itinerary</h3>`;
+            const itineraryList = itinerary.attractions.map(attr =>
+                `<p>${attr.name} on ${attr.date} at ${attr.time}</p>`
+            ).join('');
+            itineraryDiv.innerHTML += itineraryList;
+
+            itinerary.attractions.forEach(attraction => {
+                const checkbox = document.getElementById(attraction.name);
+                const dateInput = document.getElementById(`date-${attraction.name}`);
+                const timeInput = document.getElementById(`time-${attraction.name}`);
+                if (checkbox && dateInput && timeInput) {
+                    checkbox.checked = true;
+                    dateInput.value = attraction.date;
+                    timeInput.value = attraction.time;
+                }
+            }
+            )
+        }
+
+    }
+    window.addEventListener('storage', (event) => {
+        if (event.key === 'savedItinerary') {
+            const updatedItinerary = JSON.parse(event.newValue);
+            cityDropdown.value = updatedItinerary.city;
+            itineraryDiv.innerHTML = `<h3>Your Selected Itinerary</h3>`;
+            const ititneraryList = updatedItinerary.attractions.map(attr =>
+                `<p>${attr.name} on ${attr.date} at ${attr.time}</p>`
+            ).join('');
+            itineraryDiv.innerHTML += itineraryList;
+
+            updatedItinerary.attractions.forEach(attraction => {
+                const checkbox = document.getElementById(attraction.name);
+                const dateInput = document.getElementById(`date-${attraction.name}`);
+                const timeInput = document.getElementById(`time-${attraction.name}`);
+                if (checkbox && dateInput && timeInput) {
+                    checkbox.checked = true;
+                    dateInput.value = attraction.date;
+                    timeInput.value = attraction.time;
+                }
+            });
+
+        }
+
+
+    });
+    loadItinerary();
 });
 
