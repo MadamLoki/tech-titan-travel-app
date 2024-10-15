@@ -39,6 +39,7 @@
                             <li class="nav-item"><a class="nav-link" href="./city.html">Destinations</a></li>
                             <li class="nav-item"><a class="nav-link" href="./tools.html">Your Travel</a></li>
                             <li class="nav-item"><a class="nav-link" href="/#about">About Us</a></li>
+                            <li cass="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
                         </ul>
                         <!-- Dark Mode Toggle Button -->
                         <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button"
@@ -84,6 +85,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Trip Name</h5>
                             <input type="text" id="tripName" required>
+                            <button onclick = "createTripID()">Create Trip</button>
+                            <!-- Need to add a function for this and have it store to the Table-->
                         </div>
                     </div>
                 </div>
@@ -93,6 +96,7 @@
                             <h5 class="card-title">Total Budget</h5>
                             <input type="number" id="expenseAmount" required>
                             <button onclick="createBudget()">Create Budget</button>
+                            <!-- need to have this data store to the Table -->
                         </div>
                     </div>
                 </div>
@@ -110,7 +114,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Currency</h5>
-                            <input type="text" id="currency" required> <!-- Can we make this a dropdown menu? -->
+                            <input type="text" id="currency" required>
+                            <!-- Can we make this a dropdown menu? -->
+                            <button onclick="submitCurrency()">Submit Currency</button>
                         </div>
                     </div>
                 </div>
@@ -118,7 +124,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Expenses</h5>
-                            <input type="text" id="expenseCategory" required> <button onclick="addExpense()">Add Expense</button>
+                            <input type="text" id="expenseCategory" required>
+                            <button onclick="addExpense()">Add Expense</button>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -127,18 +134,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="expensesTable">
-                                    <tr>
-                                        <td>Flight</td>
-                                        <td>$1000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hotel</td>
-                                        <td>$500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Food</td>
-                                        <td>$300</td>
-                                    </tr>
+                                    <!-- Expenses dynamically added here -->
                                 </tbody>
                             </table>
                         </div>
@@ -163,6 +159,7 @@
     <script src="./assets/js/logic.js"></script>
     <script src="./assets/js/cities.js"></script>
     <script src="./assets/js/quote.js"></script>
+    <script src="./assets/js/expenses.js"></script>
 
 </body>
 

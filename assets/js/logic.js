@@ -62,10 +62,4 @@ function promptUser() {
     } else {
         alert("Please enter your information again.");
     }
-
-    if (firstName && lastName && email) {
-        alert(`Thank you, ${firstName} ${lastName}. Your email is ${email}.`);
-    } else {
-        alert("All fields are required!");
-    }
 }
