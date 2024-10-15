@@ -5,16 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JourneySync</title>
+    <!-- Favicon -->
     <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
     <link href="./assets/css/style.css" rel="stylesheet">
     <link href="./assets/css/itinerary.css" rel="stylesheet">
 </head>
 
 <body>
     <main class="scope">
+        <!-- Header Section -->
         <header>
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center">
@@ -23,8 +29,9 @@
                         <p class="lead">Plan your next adventure with us!</p>
                     </div>
                 </div>
-                <nav class="navbar navbar-expand-lg" alt="navigation bar">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <!-- Navigation Bar -->
+                <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -33,7 +40,8 @@
                             <li class="nav-item"><a class="nav-link" href="./city.html">Destinations</a></li>
                             <li class="nav-item"><a class="nav-link" href="/#about">About Us</a></li>
                         </ul>
-                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button">
+                        <!-- Dark Mode Toggle Button -->
+                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button" aria-label="Toggle dark mode">
                             <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
                         </button>
                     </div>
@@ -41,6 +49,7 @@
             </div>
         </header>
 
+        <!-- Main Carousel -->
         <div id="carouselMain" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <!-- Carousel images dynamically added here -->
@@ -55,15 +64,68 @@
             </button>
         </div>
 
+        <!-- Quote Section -->
         <figure class="text-end">
             <blockquote class="blockquote">
-                <p>“A person susceptible to ‘wanderlust’ is not so much addicted to movement as committed to transformation.”</p>
+                <p id="quote" class="travel-quote"></p>
             </blockquote>
-            <figcaption class="blockquote-footer">
-                Pico Iyer <cite title="Good Reads"><i class="bi bi-book"></i></cite>
+            <figcaption id="author" class="blockquote-footer">
+                <cite title="Good Reads"><i class="bi bi-book"></i>
             </figcaption>
         </figure>
 
+        <!-- Features Section -->
+        <div class="features">
+            <div class="feature-header">
+                <h2>Why Travel With Us?</h2>
+            </div>
+            <div class="cards-feature">
+                <!-- Feature Card: All in One -->
+                <div class="feature-card">
+                    <img src="https://thesavvycouple.com/wp-content/uploads/2021/12/how-to-travel-cheap.jpg"
+                        alt="All in One Planning: Couple planning a trip on a laptop">
+                    <h3>All in One</h3>
+                    <p>Budget, Track and Plan all in one place!</p>
+                </div>
+                <!-- Feature Card: Affordable Travel Options -->
+                <div class="feature-card">
+                    <img src="https://mystead.com/wp-content/uploads/2019/07/t1-1024x684.jpg"
+                        alt="Affordable Travel Options: People enjoying budget-friendly vacation">
+                    <h3>Affordable Travel Options</h3>
+                    <p>Travel without breaking the bank.</p>
+                </div>
+                <!-- Feature Card: Collaborative Budgeting Tools -->
+                <div class="feature-card">
+                    <img src="https://adventureawaits.net/wp-content/uploads/2022/03/Group-Travel-1-1024x682.jpg"
+                        alt="Collaborative Budgeting Tools: Group of friends planning a trip together">
+                    <h3>Collaborative Budgeting Tools</h3>
+                    <p>Plan a trip together with ease!</p>
+                </div>
+                <!-- Feature Card: Amazing Destinations -->
+                <div class="feature-card">
+                    <img src="https://st.depositphotos.com/2069237/3303/i/380/depositphotos_33031997-stock-photo-happy-couple-by-tower-bridge.jpg"
+                        alt="Amazing Destinations: Happy couple in front of Tower Bridge, London">
+                    <h3>Amazing Destinations</h3>
+                    <p>Discover breathtaking places around the states.</p>
+                </div>
+                <!-- Feature Card: Travel Planning -->
+                <div class="feature-card">
+                    <img src="https://st2.depositphotos.com/3837271/5507/i/380/depositphotos_55072853-stock-photo-time-to-travel-wooden-sign.jpg"
+                        alt="Travel Planning: Wooden sign saying 'Time to Travel'">
+                    <h3>Travel Planning</h3>
+                    <p>Worry free travel.</p>
+                </div>
+                <!-- Feature Card: 24/7 Support -->
+                <div class="feature-card">
+                    <img src="https://www.iconpacks.net/icons/1/free-phone-support-icon-512-thumb.png"
+                        alt="24/7 Support: Phone Support">
+                    <h3>Free 24/7 Support</h3>
+                    <p>We're here for you, anytime, anywhere.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
         <article id="about" class="container about-section p-4 rounded shadow">
             <h2 class="text-center mb-4">About the Team</h2>
             <div class="row">
@@ -88,16 +150,20 @@
             </div>
         </article>
 
+        <!-- Footer -->
         <footer class="bg-dark text-white py-4 mt-5">
             <div class="container text-center">
-                <p class="mb-0">&copy; JourneySync</p>
+                <p class="mb-0">&copy; JourneySync - Tech Titans</p>
             </div>
         </footer>
     </main>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/logic.js"></script>
+    <script src="./assets/js/quote.js"></script>
 </body>
 
 </html>
