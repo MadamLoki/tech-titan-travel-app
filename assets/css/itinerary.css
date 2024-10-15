@@ -8,7 +8,7 @@
     --info-color: #17a2b8;
 }
 
-/* JourneySync color scheme and Font */
+/* Itnerary color scheme and Font */
 /* City selection and itinerary */
 .cityDropdown {
     width: 20%;
@@ -85,7 +85,6 @@
 }
 
 /* Dark Mode styles */
-
 .dark-mode .cityDropdown {
     background-color: var(--light-color);
     color: var(--dark-color);
