@@ -8,6 +8,7 @@
     --light-color: #c2c2c2;
     --success-color: #28a745;
     --info-color: #17a2b8;
+    --button-color: #6086af;
 }
 
 /* JourneySync color scheme and Font */
@@ -59,8 +60,53 @@
     margin: 10px;
 }
 
-/* Features */
+/* Planning */
+.planning-feature {
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--light-color);
+}
 
+.planning-feature h2 {
+    font-family: 'franklin gothic medium', 'arial narrow', arial, sans-serif;
+    font-size: 25px;
+    color: var(--primary-color);
+    margin: 10px;
+    text-align: center;
+    box-shadow: var(--dark-color);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.planning-feature p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: var(--dark-color);
+    margin: 10px;
+    text-align: center;
+}
+
+.planning-feature a{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--button-color);
+    color: var(--dark-color);
+}
+
+.planning-feature img {
+    display: flex;
+    width: 500px;
+    height: auto;
+    margin-left: auto;
+    border-radius: 10px;
+}
+
+/* Features */
 .feature-header {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 25px;
@@ -145,8 +191,13 @@
     color: var(--light-color);
 }
 
-/* Dark Feature cards */
+/* darkmode planning panel */
+.dark-mode .planning-feature {
+    background-color: var(--secondary-dark-color);
+    color: var(--light-color);
+}
 
+/* Dark Feature cards */
 .dark-mode .feature-header {
     background-color: var(--secondary-dark-color);
     color: var(--info-color);
