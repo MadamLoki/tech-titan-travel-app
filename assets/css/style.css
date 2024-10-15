@@ -28,6 +28,7 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     color: var(--secondary-color);
+    white-space: normal;
 }
 
 .container-fluid {
