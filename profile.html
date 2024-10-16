@@ -65,13 +65,20 @@
         </figure>
 
         <!-- Features Section -->
-        <section class="container mt-5">
+        <div class="container mt-5">
             <h2>Manage Your Itinerary</h2>
-            <div id="cityInfo"></div>
-            <div id="itineraryDiv" class="mt-3"></div>
-            <button id="saveChanges" class="btn btn-primary mt-3">Save Changes</button>
-        </section>
-
+            
+            <!-- Section for displaying the selected city and itinerary -->
+            <div id="cityInfo" class="mb-3"></div>
+            <div id="itineraryDiv" class="mb-3"></div>
+    
+            <!-- Button to save changes -->
+            <button id="saveChanges" class="btn btn-primary mb-3">Save Changes</button>
+    
+            <!-- Section for adding new attractions -->
+            <h3>Add New Attractions</h3>
+            <div id="newAttractionsDiv" class="mb-3"></div>
+        </div>
 
 
         <!-- About Section -->
@@ -91,7 +98,7 @@
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/logic.js"></script>
     <script src="./assets/js/quote.js"></script>
-     <script src="assets\js\cities.js"></script>
+     <script src="assets\js\profile.js"></script>
 </body>
 
 </html>
