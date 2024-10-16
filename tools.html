@@ -19,6 +19,7 @@
 <body>
 
     <main class="scope">
+        <!-- Header Section -->
         <header>
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center">
@@ -27,6 +28,7 @@
                         <p class="lead">Plan your next adventure with us!</p>
                     </div>
                 </div>
+                <!-- Navigation Bar -->
                 <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -37,8 +39,9 @@
                             <li class="nav-item"><a class="nav-link" href="./city.html">Destinations</a></li>
                             <li class="nav-item"><a class="nav-link" href="./tools.html">Your Travel</a></li>
                             <li class="nav-item"><a class="nav-link" href="/#about">About Us</a></li>
-                            <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
+                            <li cass="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
                         </ul>
+                        <!-- Dark Mode Toggle Button -->
                         <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button" aria-label="Toggle dark mode">
                             <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
                         </button>
@@ -47,6 +50,32 @@
             </div>
         </header>
 
+        <!-- Main Carousel -->
+        <div id="carouselMain" class="carousel slide" data-bs-ride="carouselInterval">
+            <div class="carousel-inner">
+                <!-- Carousel images dynamically added here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Quote Section -->
+        <figure class="text-end">
+            <blockquote class="blockquote">
+                <p id="quote" class="travel-quote"></p>
+            </blockquote>
+            <figcaption id="author" class="blockquote-footer">
+                <cite title="Good Reads"><i class="bi bi-book"></i>
+            </figcaption>
+        </figure>
+
+        <!-- Create Budget Section -->
         <section class="container mt-5">
             <h2 class="text-center mb-4">Trip Budget Planner</h2>
             <div class="card mb-4">
