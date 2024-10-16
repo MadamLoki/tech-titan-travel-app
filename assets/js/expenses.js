@@ -14,6 +14,9 @@ function createBudget(budgets) {
     };
     expenses[tripName] = [];
 
+    console.log('Budget Created', {tripName, totalAmount, currency});
+    console.log(budgets);
+
     alert(`Budget for "${tripName}" created successfully!`);
     clearInputs();
 }
@@ -26,10 +29,15 @@ function addExpense() {
     if (budgets[tripName]) {
         expenses[tripName].push({ amount, category });
         budgets[tripName].remainingAmount -= amount;
+
+        console.log('Expense Added', {tripName, amount, category});
+        console.log('Updated Budgets', budgets[tripName]);
+
         alert(`Expense added: ${amount} ${budgets[tripName].currency} for ${category}`);
         clearExpenseInputs();
         displaySummary(tripName);
     } else {
+        console.log('Budget not found', tripName);
         alert("Budget not found. Please create a budget first.");
     }
 } 

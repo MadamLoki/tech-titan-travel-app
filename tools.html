@@ -76,70 +76,75 @@
             </figcaption>
         </figure>
 
-        <!-- Itinerary Profile Section -->
+        <!-- Create Budget Section -->
         <section class="container">
-            <h2 class="text-center">Itinerary Profile</h2>
-            <div class="row budget-item">
-                <div class="col-md-6 ">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Trip Name</h5>
-                            <input type="text" id="tripName" required>
-                            <button onclick = "createTripID()">Create Trip</button>
+            <h2 class="text-center mb-4">Trip Budget Planner</h2>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h5 class="card-title">Create Your Trip and Budget</h5>
+                        <div class="form-group">
+                            <label for="tripName">Trip Name:</label>
+                            <input type="text" class="form-control" id="tripName" required>
                             <!-- Need to add a function for this and have it store to the Table-->
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Budget</h5>
-                            <input type="number" id="expenseAmount" required>
-                            <button onclick="createBudget()">Create Budget</button>
-                            <!-- need to have this data store to the Table -->
+                    <div class="card-body">
+                        <h5 class="card-title">Total Budget</h5>
+                        <input type="number" class="form-control" id="totalAmount" required>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Currency</h5>
+                        <div class="dropdown open">
+                            <select class="form-control" id="currency">
+                                <option class="dropdown-item" value="USD">USD</option>
+                                <option class="dropdown-item" value="EUR">EUR</option>
+                                <option class="dropdown-item" value="CAD">CAD</option>
+                            </select>
                         </div>
                     </div>
+                    <button class="btn btn-primary" onclick="createBudget(budgets)">Create Budget</button>
                 </div>
             </div>
-            <div class="row mt-4 budget-item">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Remaining Budget</h5>
-                            <p class="card-text" id="remainingBudget">$</p>
-                        </div>
+
+            <!-- add expenses here -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Add Expenses</h5>
+                    <div class="form-group">
+                        <label for="tripName">Trip Name:</label>
+                        <input type="text" class="form-control" id="tripName" required>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Currency</h5>
-                            <input type="text" id="currency" required>
-                            <!-- Can we make this a dropdown menu? -->
-                            <button onclick="submitCurrency()">Submit Currency</button>
-                        </div>
+                    <div class="form-group">
+                        <label for="expenseAmount">Expense Amount:</label>
+                        <input type="number" class="form-control" id="expenseAmount" required>
                     </div>
-                </div>
-                <div class="col-md-12 mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Expenses</h5>
-                            <input type="text" id="expenseCategory" required>
-                            <button onclick="addExpense()">Add Expense</button>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Category</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="expensesTable">
-                                    <!-- Expenses dynamically added here -->
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="form-group">
+                        <label for="expenseCategory">Expense Category:</label>
+                        <input type="text" class="form-control" id="expenseCategory" required>
                     </div>
+                    <button class="btn btn-primary" onclick="addExpense()">Add Expense</button>
                 </div>
+            </div>
+
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Adjust Budget:</h5>
+                    <div class="form-group">
+                        <label for="newAmount">New Budget Amount:</label>
+                        <input type="number" class="form-control" id="newAmount" required>
+                    </div>
+                    <button onclick="adjustBudget()">Adjust Budget</button>
+                </div>
+            </div>
+
+            <div id="summary" class="card">
+                <h4 class="card-header">Budget Summary</h4>
+                <div class="card-body">
+                    <!-- Summary Populated Here -->
+                </div>
+            </div>
             </div>
         </section>
 
@@ -157,7 +162,6 @@
     <!-- Custom JS -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/logic.js"></script>
-    <script src="./assets/js/cities.js"></script>
     <script src="./assets/js/quote.js"></script>
     <script src="./assets/js/expenses.js"></script>
 
