@@ -1,59 +1,75 @@
+// Global objects to store budget and expense data
 const budgets = {};
 const expenses = {};
+let currentTripName = '';
 
-function createBudget(budgets) {
-    const tripName = document.getElementById('tripName').value;
+function createBudget() {
+    const tripName = document.getElementById('tripName').value.trim();
     const totalAmount = parseFloat(document.getElementById('totalAmount').value);
     const currency = document.getElementById('currency').value;
     
+    if (!tripName || isNaN(totalAmount) || totalAmount <= 0) {
+        alert("Please enter valid trip name and total amount.");
+        return;
+    }
 
-    budgets[tripName] = {
-        totalAmount: totalAmount,
-        currency: currency,
-        remainingAmount: totalAmount
-    };
+    if (budgets[tripName]) {
+        alert(`A budget for "${tripName}" already exists. Please use a different name or adjust the existing budget.`);
+        return;
+    }
+
+    budgets[tripName] = { totalAmount, currency, remainingAmount: totalAmount };
     expenses[tripName] = [];
-
-    console.log('Budget Created', {tripName, totalAmount, currency});
-    console.log(budgets);
+    currentTripName = tripName;
 
     alert(`Budget for "${tripName}" created successfully!`);
-    clearInputs();
+    updateCurrentTripDisplay();
+    displaySummary(tripName);
+    clearInputs(['tripName', 'totalAmount']);
 }
 
 function addExpense() {
-    const tripName = document.getElementById('tripName').value;
-    const amount = parseFloat(document.getElementById('expenseAmount').value);
-    const category = document.getElementById('expenseCategory').value;
-
-    if (budgets[tripName]) {
-        expenses[tripName].push({ amount, category });
-        budgets[tripName].remainingAmount -= amount;
-
-        console.log('Expense Added', {tripName, amount, category});
-        console.log('Updated Budgets', budgets[tripName]);
-
-        alert(`Expense added: ${amount} ${budgets[tripName].currency} for ${category}`);
-        clearExpenseInputs();
-        displaySummary(tripName);
-    } else {
-        console.log('Budget not found', tripName);
-        alert("Budget not found. Please create a budget first.");
+    if (!currentTripName) {
+        alert("Please create or select a trip first.");
+        return;
     }
-} 
+
+    const amount = parseFloat(document.getElementById('expenseAmount').value);
+    const category = document.getElementById('expenseCategory').value.trim();
+
+    if (isNaN(amount) || amount <= 0 || !category) {
+        alert("Please enter valid expense amount and category.");
+        return;
+    }
+
+    expenses[currentTripName].push({ amount, category });
+    budgets[currentTripName].remainingAmount -= amount;
+
+    alert(`Expense added: ${amount} ${budgets[currentTripName].currency} for ${category}`);
+    displaySummary(currentTripName);
+    clearInputs(['expenseAmount', 'expenseCategory']);
+}
 
 function adjustBudget() {
-    const tripName = document.getElementById('tripName').value;
+    if (!currentTripName) {
+        alert("Please create or select a trip first.");
+        return;
+    }
+
     const newAmount = parseFloat(document.getElementById('newAmount').value);
 
-    if (budgets[tripName]) {
-        budgets[tripName].totalAmount = newAmount;
-        budgets[tripName].remainingAmount = newAmount - calculateTotalSpent(tripName);
-        alert(`Budget adjusted to ${newAmount} ${budgets[tripName].currency}`);
-        displaySummary(tripName);
-    } else {
-        alert("Budget not found. Please create a budget first.");
+    if (isNaN(newAmount) || newAmount <= 0) {
+        alert("Please enter a valid new budget amount.");
+        return;
     }
+
+    const totalSpent = calculateTotalSpent(currentTripName);
+    budgets[currentTripName].totalAmount = newAmount;
+    budgets[currentTripName].remainingAmount = newAmount - totalSpent;
+
+    alert(`Budget adjusted to ${newAmount} ${budgets[currentTripName].currency}`);
+    displaySummary(currentTripName);
+    clearInputs(['newAmount']);
 }
 
 function calculateTotalSpent(tripName) {
@@ -61,27 +77,37 @@ function calculateTotalSpent(tripName) {
 }
 
 function displaySummary(tripName) {
-    const totalSpent = calculateTotalSpent(tripName);
-    const summary = `
-        <h3>Budget Summary for "${tripName}"</h3>
-        <p>Total Budget: ${budgets[tripName].totalAmount} ${budgets[tripName].currency}</p>
-        <p>Total Spent: ${totalSpent} ${budgets[tripName].currency}</p>
-        <p>Remaining Budget: ${budgets[tripName].remainingAmount} ${budgets[tripName].currency}</p>
-        <h4>Expenses:</h4>
-        <ul>
-            ${expenses[tripName].map(exp => `<li>${exp.amount} ${budgets[tripName].currency} - ${exp.category}</li>`).join('')}
-        </ul>
-    `;
-    document.getElementById('summary').innerHTML = summary;
+    const summaryElement = document.getElementById('summary');
+    if (budgets[tripName]) {
+        const totalSpent = calculateTotalSpent(tripName);
+        const summary = `
+            <h3>Budget Summary for "${tripName}"</h3>
+            <p>Total Budget: ${budgets[tripName].totalAmount.toFixed(2)} ${budgets[tripName].currency}</p>
+            <p>Total Spent: ${totalSpent.toFixed(2)} ${budgets[tripName].currency}</p>
+            <p>Remaining Budget: ${budgets[tripName].remainingAmount.toFixed(2)} ${budgets[tripName].currency}</p>
+            <h4>Expenses:</h4>
+            <ul>
+                ${expenses[tripName].map(exp => `<li>${exp.amount.toFixed(2)} ${budgets[tripName].currency} - ${exp.category}</li>`).join('')}
+            </ul>
+        `;
+        summaryElement.innerHTML = summary;
+    } else {
+        summaryElement.innerHTML = '<p>No budget found. Please create a budget first.</p>';
+    }
 }
 
-function clearInputs() {
-    document.getElementById('tripName').value = '';
-    document.getElementById('totalAmount').value = '';
-    document.getElementById('currency').value = '';
+function clearInputs(ids) {
+    ids.forEach(id => document.getElementById(id).value = '');
 }
 
-function clearExpenseInputs() {
-    document.getElementById('expenseAmount').value = '';
-    document.getElementById('expenseCategory').value = '';
+function updateCurrentTripDisplay() {
+    document.getElementById('currentTripName').textContent = currentTripName || 'No Trip Selected';
 }
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('createBudgetBtn').addEventListener('click', createBudget);
+    document.getElementById('addExpenseBtn').addEventListener('click', addExpense);
+    document.getElementById('adjustBudgetBtn').addEventListener('click', adjustBudget);
+    updateCurrentTripDisplay();
+});
