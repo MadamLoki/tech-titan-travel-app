@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
     <main class="scope">
         <!-- Header Section -->
         <header>
@@ -29,8 +30,7 @@
                 </div>
                 <!-- Navigation Bar -->
                 <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -39,11 +39,10 @@
                             <li class="nav-item"><a class="nav-link" href="./city.html">Destinations</a></li>
                             <li class="nav-item"><a class="nav-link" href="./tools.html">Your Travel</a></li>
                             <li class="nav-item"><a class="nav-link" href="/#about">About Us</a></li>
-                            <li cass="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
                         </ul>
                         <!-- Dark Mode Toggle Button -->
-                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button"
-                            aria-label="Toggle dark mode">
+                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button" aria-label="Toggle dark mode">
                             <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
                         </button>
                     </div>
@@ -76,80 +75,71 @@
             </figcaption>
         </figure>
 
-        <!-- Itinerary Profile Section -->
-        <section class="container">
-            <h2 class="text-center">Itinerary Profile</h2>
-            <div class="row budget-item">
-                <div class="col-md-6 ">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Trip Name</h5>
-                            <input type="text" id="tripName" required>
-                            <button onclick = "createTripID()">Create Trip</button>
-                            <!-- Need to add a function for this and have it store to the Table-->
-                        </div>
+        <!-- Create Budget Section -->
+        <section class="container mt-5">
+            <h2 class="text-center mb-4">Trip Budget Planner</h2>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Create Your Trip and Budget</h5>
+                    <div class="form-group mb-3">
+                        <label for="tripName">Trip Name:</label>
+                        <input type="text" class="form-control" id="tripName" required>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Budget</h5>
-                            <input type="number" id="expenseAmount" required>
-                            <button onclick="createBudget()">Create Budget</button>
-                            <!-- need to have this data store to the Table -->
-                        </div>
+                    <div class="form-group mb-3">
+                        <label for="totalAmount">Total Budget:</label>
+                        <input type="number" class="form-control" id="totalAmount" required>
                     </div>
+                    <div class="form-group mb-3">
+                        <label for="currency">Currency:</label>
+                        <select class="form-control" id="currency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="CAD">CAD</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="createBudgetBtn">Create Budget</button>
                 </div>
             </div>
-            <div class="row mt-4 budget-item">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Remaining Budget</h5>
-                            <p class="card-text" id="remainingBudget">$</p>
-                        </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Add Expenses for <span id="currentTripName"></span></h5>
+                    <div class="form-group mb-3">
+                        <label for="expenseAmount">Expense Amount:</label>
+                        <input type="number" class="form-control" id="expenseAmount" required>
                     </div>
+                    <div class="form-group mb-3">
+                        <label for="expenseCategory">Expense Category:</label>
+                        <input type="text" class="form-control" id="expenseCategory" required>
+                    </div>
+                    <button class="btn btn-primary" id="addExpenseBtn">Add Expense</button>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Currency</h5>
-                            <input type="text" id="currency" required>
-                            <!-- Can we make this a dropdown menu? -->
-                            <button onclick="submitCurrency()">Submit Currency</button>
-                        </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Adjust Budget</h5>
+                    <div class="form-group mb-3">
+                        <label for="newAmount">New Budget Amount:</label>
+                        <input type="number" class="form-control" id="newAmount" required>
                     </div>
+                    <button class="btn btn-primary" id="adjustBudgetBtn">Adjust Budget</button>
                 </div>
-                <div class="col-md-12 mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Expenses</h5>
-                            <input type="text" id="expenseCategory" required>
-                            <button onclick="addExpense()">Add Expense</button>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Category</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="expensesTable">
-                                    <!-- Expenses dynamically added here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+            </div>
+
+            <div id="summary" class="card">
+                <h4 class="card-header">Budget Summary</h4>
+                <div class="card-body">
+                    <!-- Summary Populated Here -->
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="bg-dark text-white py-4 mt-5">
             <div class="container text-center">
                 <p class="mb-0">&copy; JourneySync - Tech Titans</p>
             </div>
         </footer>
-
     </main>
 
     <!-- Bootstrap JS -->
@@ -157,7 +147,6 @@
     <!-- Custom JS -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/logic.js"></script>
-    <script src="./assets/js/cities.js"></script>
     <script src="./assets/js/quote.js"></script>
     <script src="./assets/js/expenses.js"></script>
 

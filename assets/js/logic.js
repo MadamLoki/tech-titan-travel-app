@@ -59,6 +59,7 @@ function promptUser() {
     const confirmInfo = confirm(`Is this information correct?\nName: ${firstName} ${lastName}\nEmail: ${email}`);
     if (confirmInfo) {
         alert("Thank you! Your information has been saved.");
+        window.location.href = 'profile.html';
     } else {
         alert("Please enter your information again.");
     }
