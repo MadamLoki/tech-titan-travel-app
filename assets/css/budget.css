@@ -1,0 +1,104 @@
+:root {
+    --primary-color: #3a7cc4;
+    --secondary-color: #6c757d;
+    --dark-color: #343a40;
+    --secondary-dark-color: #495057;
+    --light-color: #c2c2c2;
+    --secondary-light-color: #afafaf;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
+    --button-color: #6086af;
+}
+
+.card-body {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.card-title {
+    color: var(--dark-color);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+}
+
+.card-text {
+    font-size: 20px;
+    color: var(--dark-color);
+    white-space: normal;
+    padding-inline: 20px;
+}
+
+.summary-card {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.table {
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+}
+
+.table-striped {
+    border-radius: 10px;
+}
+
+.table-striped th {
+    text-decoration: underline;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) {
+    background-color: var(--secondary-light-color);
+}
+
+
+/* Dark Mode */
+
+.dark-mode {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.dark-mode .card-body {
+    background-color: var(--secondary-dark-color);
+}
+
+.dark-mode .card-title  {
+    color: var(--info-color);
+    text-decoration: underline;
+}
+
+.dark-mode .card-text {
+    color: var(--light-color);
+}
+
+.dark-mode .card-body h4 {
+    color: var(--info-color);
+    text-decoration: underline;
+}
+
+.dark-mode .summary {
+    background-color: var(--dark-color);
+}
+
+.dark-mode .table-striped {
+    color: var(--light-color);
+    background-color: var(--secondary-dark-color);
+}
+
+.dark-mode .table-striped th {
+    color: var(--info-color);
+    background-color: var(--dark-color);
+}
+
+.dark-mode .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: var(--secondary-color);
+}
+
+.dark-mode .table-striped>tbody>tr:nth-of-type(even) {
+    background-color: var(--secondary-dark-colordark-color);
+}

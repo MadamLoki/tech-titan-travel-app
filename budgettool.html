@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="./assets/css/style.css" rel="stylesheet">
-    <link href="./assets/css/itinerary.css" rel="stylesheet">
+    <link href="./assets/css/budget.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,7 +30,8 @@
                 </div>
                 <!-- Navigation Bar -->
                 <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -42,7 +43,8 @@
                             <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
                         </ul>
                         <!-- Dark Mode Toggle Button -->
-                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button" aria-label="Toggle dark mode">
+                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button"
+                            aria-label="Toggle dark mode">
                             <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
                         </button>
                     </div>
@@ -51,7 +53,7 @@
         </header>
 
         <!-- Main Carousel -->
-        <div id="carouselMain" class="carousel slide" data-bs-ride="carouselInterval">
+        <div id="carouselMain" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <!-- Carousel images dynamically added here -->
             </div>
@@ -63,6 +65,9 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+            <div class="carousel-caption">
+                <!-- Dynamic capiton? -->
+            </div>
         </div>
 
         <!-- Quote Section -->
@@ -127,11 +132,21 @@
                 </div>
             </div>
 
-            <div id="summary" class="card">
-                <h4 class="card-header">Budget Summary</h4>
-                <div class="card-body">
-                    <!-- Summary Populated Here -->
+            <div class="summary">
+                <h3 class="text-center">Budget Summary</h3>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div id="summary">
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="button">
+                <button class="btn btn-success" id="saveBudgetBtn">Save Budget</button>
+                <button class="btn btn-light" id="loadBudgetBtn">Load Budget</button>
+                <button class="btn btn-warning" id="clearBudgetBtn">Clear Budget</button>
+                <button class="btn btn-danger" id="deleteBudgetBtn">Delete Budget</button>
             </div>
         </section>
 

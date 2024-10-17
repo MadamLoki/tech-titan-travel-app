@@ -164,6 +164,22 @@
     color: var(--primary-color);  /* Bootstrap's primary blue color */
 }
 
+
+ /* buttons for budget */
+
+.button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.btn {
+    border-radius: 10px;
+    border-color: var(--secondary-color);
+}
+
 /* Dark Mode styles*/
 
 .dark-mode .scope {

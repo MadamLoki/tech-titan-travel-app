@@ -13,7 +13,7 @@ const cityNames = [
     "New Orleans",
     "Miami",
     "San Diego",
-    "Travel"
+    "Travel",
 ];
 
 async function fetchRandomCityImage(count) {
@@ -29,6 +29,80 @@ async function fetchRandomCityImage(count) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const carouselCaption = document.querySelector('.carousel-caption');
+
+    function createCarouselItem(images) {
+        images.forEach((image, index) => {
+            const item = document.createElement('div');
+            item.classList.add('carousel-item');
+            if (index === 0) item.classList.add('active');
+
+            const img = document.createElement('img');
+            img.src = image.urls.regular;
+            img.classList.add('carousel-image');
+            img.alt = getAltTextFromUrl(image.urls.regular);
+
+            const caption = document.createElement('div');
+            caption.classList.add('carousel-caption');
+            caption.textContent = image.cityNames || 'City Image';
+
+            item.appendChild(img);
+            item.appendChild(caption);
+            carouselInner.appendChild(item);
+        });
+        console.log('Carousel Items created!');
+    }
+
+    function getAltTextFromUrl(url) {
+        // Extract file name from URL
+        const fileName = url.substring(url.lastIndexOf('/') + 1);
+        // Remove file extension and replace hyphens with spaces
+        const altText = fileName.split('.')[0].replace(/[-_]/g, ' ');
+        //capitalize first letter of alt text
+        return altText.charAt(0).toUpperCase() + altText.slice(1);
+    }
+
+    async function initCarousel() {
+        try {
+            const images = await fetchRandomCityImage(10);
+            createCarouselItem(images);
+
+            // Initialize Bootstrap Carousel with options
+            const carouselInterval = 100000;
+            new bootstrap.Carousel(document.getElementById('carouselMain'), {
+                interval: carouselInterval,
+                pause: 'hover',
+                wrap: true,
+            });
+            console.log('Carousel initialized!');
+        }
+        catch (error) {
+            console.error('Error initializing Carousel:', error);
+        }
+    }
+    
+    window.addEventListener('DOMContentLoaded', initCarousel);
+
+    //carousel event listerner for slide event
+    const myCarousel = document.getElementById('carouselMain');
+
+    myCarousel.addEventListener('slide.bs.carousel', (event) => {
+        const activeItem = event.relatedTarget;
+        const city = activeItem.querySelector('.carousel-caption').textContent;
+        carouselCaption.textContent = city;
+        console.log('Slide event fired! Moving to slide:', city);
+    });
+});
+
+
+
+
+
+
+/* 
+
 function createCarouselItems(images) {
     const carouselInner = document.querySelector('.carousel-inner');
     carouselInner.innerHTML = ''; // Clear existing items
@@ -40,7 +114,15 @@ function createCarouselItems(images) {
         const img = document.createElement('img');
         img.src = image.urls.regular;
         img.classList.add('carousel-image');
-        img.alt = image.alt_description;
+        img.alt = getAltTextFromUrl(image.urls.regular);
+
+        const caption = document.createElement('div');
+        caption.classList.add('carousel-caption', 'd-none', 'd-md-block');
+        const captionText = document.createElement('h5');
+        captionText.textContent = image.alt_description || 'City Image';
+        caption.appendChild(captionText);
+
+        item.appendChild(caption);
 
         item.appendChild(img);
         carouselInner.appendChild(item);
@@ -73,5 +155,5 @@ window.addEventListener('DOMContentLoaded', initCarousel);
 const myCarousel = document.getElementById('carouselMain');
 
 myCarousel.addEventListener('slide.bs.carousel', (event) => {
-   /*  console.log('Slide event fired! Moving to slide:', event.to);  */
-}); 
+    /* console.log('Slide event fired! Moving to slide:', event.to); 
+}); */

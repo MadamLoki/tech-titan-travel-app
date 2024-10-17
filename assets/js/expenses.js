@@ -1,3 +1,17 @@
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('createBudgetBtn').addEventListener('click', createBudget);
+    document.getElementById('addExpenseBtn').addEventListener('click', addExpense);
+    document.getElementById('adjustBudgetBtn').addEventListener('click', adjustBudget);
+    
+    //buttons to save, load, clear and delete budget
+    document.getElementsById('saveBudgetBtn').addEventListener('click', saveBudget);
+    document.getElementsById('loadBudgetBtn').addEventListener('click', loadBudget);
+    document.getElementsById('deleteBudgetBtn').addEventListener('click', deleteBudget);
+    document.getElementsById('clearBudgetBtn').addEventListener('click', clearBudget);
+    updateCurrentTripDisplay();
+});
+
 // Global objects to store budget and expense data
 const budgets = {};
 const expenses = {};
@@ -82,50 +96,104 @@ function displaySummary(tripName) {
     if (budgets[tripName]) {
         const totalSpent = calculateTotalSpent(tripName);
         const summary = `
-    <h3>Budget Summary for "${tripName}"</h3>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Total Budget</td>
-                <td>${budgets[tripName].totalAmount.toFixed(2)} ${budgets[tripName].currency}</td>
-            </tr>
-            <tr>
-                <td>Total Spent</td>
-                <td>${totalSpent.toFixed(2)} ${budgets[tripName].currency}</td>
-            </tr>
-            <tr>
-                <td>Remaining Budget</td>
-                <td>${budgets[tripName].remainingAmount.toFixed(2)} ${budgets[tripName].currency}</td>
-            </tr>
-        </tbody>
-    </table>
-    <h4>Expenses:</h4>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Amount</th>
-                <th>Category</th>
-            </tr>
-        </thead>
-        <tbody>
-            ${expenses[tripName].map(exp => `
-                <tr>
-                    <td>${exp.amount.toFixed(2)} ${budgets[tripName].currency}</td>
-                    <td>${exp.category}</td>
-                </tr>
-            `).join('')}
-        </tbody>
-    </table>
-`;
+                    <h4>Budget Summary for "${tripName}"</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Total Budget</td>
+                                <td>${budgets[tripName].totalAmount.toFixed(2)} ${budgets[tripName].currency}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Spent</td>
+                                <td>${totalSpent.toFixed(2)} ${budgets[tripName].currency}</td>
+                            </tr>
+                            <tr>
+                                <td>Remaining Budget</td>
+                                <td>${budgets[tripName].remainingAmount.toFixed(2)} ${budgets[tripName].currency}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4>Expenses:</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${expenses[tripName].map(exp => `
+                            <tr>
+                                <td>${exp.amount.toFixed(2)} ${budgets[tripName].currency}</td>
+                                <td>${exp.category}</td>
+                            </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>`;
         summaryElement.innerHTML = summary;
+    }
+}
+
+function saveBudget() {
+    if (!currentTripName) {
+        alert("Please create or select a trip first.");
+        return;
+    }
+
+    localStorage.setItem('budgets', JSON.stringify(budgets));
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    alert(`Budget for "${currentTripName}" saved successfully!`);
+    console.log('Budgets:', budgets);
+}
+
+function loadBudget() {
+    const savedBudgets = JSON.parse(localStorage.getItem('budgets'));
+    const savedExpenses = JSON.parse(localStorage.getItem('expenses'));
+
+    if (savedBudgets && savedExpenses) {
+        Object.assign(budgets, savedBudgets);
+        Object.assign(expenses, savedExpenses);
+        alert('Budgets loaded successfully!');
+        console.log('Budgets:', budgets);
     } else {
-        summaryElement.innerHTML = '<p>No budget found. Please create a budget first.</p>';
+        alert('No saved budgets found.');
+    }
+}
+
+function deleteBudget() {
+    if (!currentTripName) {
+        alert("Please create or select a trip first.");
+        return;
+    }
+
+    if (confirm(`Are you sure you want to delete the budget for "${currentTripName}"?`)) {
+        delete budgets[currentTripName];
+        delete expenses[currentTripName];
+        localStorage.setItem('budgets', JSON.stringify(budgets));
+        localStorage.setItem('expenses', JSON.stringify(expenses));
+        alert(`Budget for "${currentTripName}" deleted successfully!`);
+        currentTripName = '';
+        updateCurrentTripDisplay();
+        displaySummary(currentTripName);
+    }
+}
+
+function clearBudget() {
+    if (confirm('Are you sure you want to clear all budgets and expenses?')) {
+        localStorage.removeItem('budgets');
+        localStorage.removeItem('expenses');
+        Object.keys(budgets).forEach(key => delete budgets[key]);
+        Object.keys(expenses).forEach(key => delete expenses[key]);
+        alert('Budgets and expenses cleared successfully!');
+        currentTripName = '';
+        updateCurrentTripDisplay();
+        displaySummary(currentTripName);
     }
 }
 
@@ -137,10 +205,5 @@ function updateCurrentTripDisplay() {
     document.getElementById('currentTripName').textContent = currentTripName || ' ';
 }
 
-// Initialize the page
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('createBudgetBtn').addEventListener('click', createBudget);
-    document.getElementById('addExpenseBtn').addEventListener('click', addExpense);
-    document.getElementById('adjustBudgetBtn').addEventListener('click', adjustBudget);
-    updateCurrentTripDisplay();
-});
+
+
