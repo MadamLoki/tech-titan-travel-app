@@ -2,10 +2,24 @@
 const UNSPLASH_ACCESS_KEY = '592hvox9s4ckVC4mR6HUu0LTqCZlb2ChiAWDJ0UV128'; // Replace with your actual Unsplash API key
 const UNSPLASH_API_URL = 'https://api.unsplash.com/search/photos';
 
+const cityNames = [
+    "New York",
+    "Las Vegas",
+    "Denver",
+    "Washington D.C.",
+    "Honolulu",
+    "Boston",
+    "Nashville",
+    "New Orleans",
+    "Miami",
+    "San Diego",
+    "Travel"
+];
+
 async function fetchRandomCityImage(count) {
     try {
         // Fetch random city image from Unsplash API
-        const response = await fetch(`${UNSPLASH_API_URL}?query=city&client_id=${UNSPLASH_ACCESS_KEY}&per_page=${count}`);
+        const response = await fetch(`${UNSPLASH_API_URL}?query=${cityNames}&client_id=${UNSPLASH_ACCESS_KEY}&per_page=${count}`);
         const data = await response.json();
         return data.results;
     }
@@ -25,8 +39,8 @@ function createCarouselItems(images) {
 
         const img = document.createElement('img');
         img.src = image.urls.regular;
-        img.classList.add('d-block', 'w-100', 'carousel-image');
-        img.alt = image.alt_description || 'Unsplash Image';
+        img.classList.add('carousel-image');
+        img.alt = image.alt_description;
 
         item.appendChild(img);
         carouselInner.appendChild(item);
@@ -40,7 +54,7 @@ async function initCarousel() {
     createCarouselItems(images);
     try {
     // Initialize Bootstrap Carousel with options
-    const carouselInterval = 6000;
+    const carouselInterval = 100000;
     new bootstrap.Carousel(document.getElementById('carouselMain'), {
         interval: carouselInterval,
         pause: 'hover',
@@ -59,5 +73,5 @@ window.addEventListener('DOMContentLoaded', initCarousel);
 const myCarousel = document.getElementById('carouselMain');
 
 myCarousel.addEventListener('slide.bs.carousel', (event) => {
-    /* console.log('Slide event fired! Moving to slide:', event.to); */
-});
+   /*  console.log('Slide event fired! Moving to slide:', event.to);  */
+}); 
