@@ -5,16 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('adjustBudgetBtn').addEventListener('click', adjustBudget);
     
     //buttons to save, load, clear and delete budget
-    document.getElementsById('saveBudgetBtn').addEventListener('click', saveBudget);
-    document.getElementsById('loadBudgetBtn').addEventListener('click', loadBudget);
-    document.getElementsById('deleteBudgetBtn').addEventListener('click', deleteBudget);
-    document.getElementsById('clearBudgetBtn').addEventListener('click', clearBudget);
+    document.getElementById('saveBudgetBtn').addEventListener('click', saveBudget);
+    document.getElementById('loadBudgetBtn').addEventListener('click', loadBudget);
+    document.getElementById('deleteBudgetBtn').addEventListener('click', deleteBudget);
+    document.getElementById('clearBudgetBtn').addEventListener('click', clearBudget);
+
+    // Load the budget when the page loads
+    loadBudget();
     updateCurrentTripDisplay();
 });
 
 // Global objects to store budget and expense data
-const budgets = {};
-const expenses = {};
+let budgets = {};
+let expenses = {};
 let currentTripName = '';
 
 function createBudget() {
@@ -41,6 +44,8 @@ function createBudget() {
     updateCurrentTripDisplay();
     displaySummary(tripName);
     clearInputs(['tripName', 'totalAmount']);
+
+    saveBudget();
 }
 
 function addExpense() {
@@ -63,6 +68,8 @@ function addExpense() {
     alert(`Expense added: ${amount} ${budgets[currentTripName].currency} for ${category}`);
     displaySummary(currentTripName);
     clearInputs(['expenseAmount', 'expenseCategory']);
+
+    saveBudget();
 }
 
 function adjustBudget() {
@@ -85,6 +92,8 @@ function adjustBudget() {
     alert(`Budget adjusted to ${newAmount} ${budgets[currentTripName].currency}`);
     displaySummary(currentTripName);
     clearInputs(['newAmount']);
+
+    saveBudget();
 }
 
 function calculateTotalSpent(tripName) {
@@ -141,30 +150,50 @@ function displaySummary(tripName) {
 }
 
 function saveBudget() {
-    if (!currentTripName) {
-        alert("Please create or select a trip first.");
-        return;
-    }
-
     localStorage.setItem('budgets', JSON.stringify(budgets));
     localStorage.setItem('expenses', JSON.stringify(expenses));
-    alert(`Budget for "${currentTripName}" saved successfully!`);
-    console.log('Budgets:', budgets);
+    localStorage.setItem('currentTripName', currentTripName);
+
+    console.log('Budget saved:', budgets);
+    console.log('Expenses saved:', expenses);
+
+    if (currentTripName) {
+
+        alert('Budget saved successfully!');
+    }
+    
 }
 
 function loadBudget() {
     const savedBudgets = JSON.parse(localStorage.getItem('budgets'));
     const savedExpenses = JSON.parse(localStorage.getItem('expenses'));
+    const savedCurrentTripName = localStorage.getItem('currentTripName');
+        if (savedBudgets && savedExpenses) {
 
-    if (savedBudgets && savedExpenses) {
-        Object.assign(budgets, savedBudgets);
-        Object.assign(expenses, savedExpenses);
-        alert('Budgets loaded successfully!');
-        console.log('Budgets:', budgets);
-    } else {
-        alert('No saved budgets found.');
+            budgets = savedBudgets;
+            expenses = savedExpenses;
+            currentTripName = savedCurrentTripName || '';
+            updateCurrentTripDisplay();
+
+            if (currentTripName) {
+                displaySummary(currentTripName);
+            
+            console.log('Budgets:', budgets);
+            console.log('Expenses:', expenses);
+
+            alert(`Budget for "${currentTripName}" loaded successfully!`);
+
+            } else {     
+            alert('No saved budgets found.');
+        }
+
+        if (currentTripName && budgets[currentTripName]) {
+            displaySummary(currentTripName);
+        } else {
+            console.log('No current trip, or invalid trip name.');
+        }
     }
-}
+};
 
 function deleteBudget() {
     if (!currentTripName) {
@@ -177,9 +206,15 @@ function deleteBudget() {
         delete expenses[currentTripName];
         localStorage.setItem('budgets', JSON.stringify(budgets));
         localStorage.setItem('expenses', JSON.stringify(expenses));
+
+        localStorage.removeItem('currentTripName');
+        
         alert(`Budget for "${currentTripName}" deleted successfully!`);
         currentTripName = '';
         updateCurrentTripDisplay();
+
+        document.getElementById('summary').innerHTML = '';
+
         displaySummary(currentTripName);
     }
 }
@@ -190,6 +225,7 @@ function clearBudget() {
         localStorage.removeItem('expenses');
         Object.keys(budgets).forEach(key => delete budgets[key]);
         Object.keys(expenses).forEach(key => delete expenses[key]);
+
         alert('Budgets and expenses cleared successfully!');
         currentTripName = '';
         updateCurrentTripDisplay();
