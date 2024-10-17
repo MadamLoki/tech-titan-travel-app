@@ -25,7 +25,7 @@
         <!-- Header Section -->
         <header>
             <div class="container-fluid">
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="card-header">
                     <div class="modal-header">
                         <h1 class="header-brand"><i class="bi bi-compass"></i> JourneySync</h1>
                         <p class="lead">Plan your next adventure with us!</p>
@@ -87,70 +87,48 @@
         <!-- Profile Section -->
         <section class="profile-section">
             <div class="primary-container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Profile</h5>
-                                <p class="card-text">Welcome, <span id="firstName"></span> <span id="lastName"> </span>!</p>
-                                <p class="card-text">Email: <span id="email"></span></p>
-                                <p class="card-text">You have '<span id="savedItineraries"></span>' saved itineraries.</p>
-                                <p class="card-text">Your total budget is: $<span id="totalBudget"></span></p>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Profile</h5>
+                        <p class="card-text">Welcome, <span id="firstName"></span> <span id="lastName"> </span>!</p>
+                        <p class="card-text">Email: <span id="email"></span></p>
+                        <p class="card-text">You have '<span id="savedItineraries"></span>' saved itineraries.</p>
+                        <p class="card-text">Your total budget is: $<span id="totalBudget"></span></p>
+                    </div>
+                </div>
+
+                <div class="itinerary-feature">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Your Saved Itineraries</h3>
+                            <div class="itinerary-list">
+                                <!-- Itinerary cards dynamically added here -->
+                                <div class="cityInfo" id="cityInfo" class="mb-3"></div>
+                                <div class="itineraryDiv" id="itineraryDiv" class="mb-3"></div>
+                                <button id="saveChanges" class="btn btn-primary mb-3">Save Changes</button>
+                                <h5 class="attraction-extra">Add New Attractions</h5>
+                                <div id="newAttractionsDiv" class="add-itenerary mb-3"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Saved Itineraries Section -->
-        </section>
-        <section class="flex-column">
-            <div class="itinerary-feature col-md-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h3 class="card-title">Your Saved Itineraries</h3>
-                        <div class="itinerary-list">
-                            <!-- Itinerary cards dynamically added here -->
-    
-                            <!-- Section for displaying the selected city and itinerary -->
-                            <div class="cityInfo" id="cityInfo" class="mb-3"></div>
-                            <div class="itineraryDiv" id="itineraryDiv" class="mb-3"></div>
-                    
-                            <!-- Button to save changes -->
-                            <button id="saveChanges" class="btn btn-primary mb-3">Save Changes</button>
-                    
-                            <!-- Section for adding new attractions -->
-                            <h5 class="attraction-extra">Add New Attractions</h5>
-                            <div id="newAttractionsDiv" class="add-itenerary mb-3"></div>
-                        </div>
+            <aside class="checklist">
+                <div class="travel-checklist">
+                    <h3>Travel Packing Checklist</h3>
+                    <p>Going on vacation should be filled with anticipation and excitement. That is why having an essential travel
+                        packing checklist is crucial for ensuring smooth and hassle-free experiences.</p>
+                    <div class="travel-section">
+                        <p>We have compiled a list of essential items to pack for your next trip. Feel free to customize this list as you need it!</p>
+                        <p>Download and Print this Handy Travel Packing Checklist <a href="https://cdn.shopify.com/s/files/1/0554/0115/2649/files/Eagle_Creek_Ultimate_Travel_Packing_Checklist-4.pdf" target="_blank">here</a>.</p>
+                    </div>
+                    <div id="checklist" class="section-items">
+                        <!-- Checklist Table dynamically added here -->
                     </div>
                 </div>
-            </div>
-                
-        
-
-        <aside class="checklist">
-            <div class="travel-checklist">
-                <h3>Travel Packing Checklist</h3>
-                <p>Going on vacation should be filled with anticipation and excitement. That is why having an essential travel
-                    packing checklist is crucial for ensuring smooth and hassle-free experiences. Whether traveling on budget
-                    airlines, exploring a new city, or lounging on a beach, having the right items packed can make all the
-                    difference.</p>
-                <div class="travel-section">
-                    <p>
-                        We have compiled a list of essential items to pack for your next trip. Feel free to customize this list as you need it!
-                    </p>
-                    <p>
-                        Download and Print this Handy Travel Packing Checklist <a href="https://cdn.shopify.com/s/files/1/0554/0115/2649/files/Eagle_Creek_Ultimate_Travel_Packing_Checklist-4.pdf" target="_blank">here</a>.
-                    </p>
-                </div>
-
-                <div id="checklist" class="section-items">
-                    <!-- Checklist Table dynamically added here -->
-                </div>
-
-            </div>
-        </aside>
+            </aside>
+        </section>
     </section>
 
         <!-- Footer -->
