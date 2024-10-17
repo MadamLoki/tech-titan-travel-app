@@ -1,0 +1,134 @@
+:root {
+    --primary-color: #3a7cc4;
+    --secondary-color: #6c757d;
+    --dark-color: #343a40;
+    --secondary-dark-color: #495057;
+    --light-color: #c2c2c2;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
+    --button-color: #6086af;
+}
+
+.profile-section {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.card-body {
+    border-radius: 10px;
+    background-color: var(--light-color);
+}
+
+.card-title {
+    color: var(--dark-color);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    padding-inline: 10px;
+}
+
+.card-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: var(--dark-color);
+    white-space: normal;
+    padding-inline: 20px;
+}
+
+.itinerary-feature {
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.attraction-extra {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    text-decoration: underline;
+}
+
+.itineraryDiv {
+    font-size: 18px;
+    margin: 10px;
+    display: row;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.itineraryDiv h4 {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.attraction-item {
+    margin-inline: 10px;
+    padding-inline: 10px;
+    align-items: center;
+}
+
+.travel-checklist {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-inline: 10px;    
+    padding-inline: 10px;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);    
+}
+
+.travel-section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+
+/* Dark Mode Features */
+
+.dark-mode {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.dark-mode .card-title {
+    color: var(--info-color);
+    text-decoration: underline;
+}
+
+.dark-mode .cityInfo {
+    background-color: var(--secondary-dark-color);
+    color: var(--primary-color);
+}
+
+.dark-mode .card-body {
+    background-color: var(--secondary-dark-color);
+    color: var(--light-color);
+}
+
+.dark-mode .card-text {
+    color: var(--light-color);
+}
+
+.dark-mode .itineraryDiv h4 { 
+    color: var(--light-color);
+}

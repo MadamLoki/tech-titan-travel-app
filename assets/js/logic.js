@@ -60,6 +60,7 @@ function promptUser() {
     if (confirmInfo) {
         alert("Thank you! Your information has been saved.");
         window.location.href = 'profile.html';
+        localStorage.setItem('user', JSON.stringify({ firstName, lastName, email }));
     } else {
         alert("Please enter your information again.");
     }

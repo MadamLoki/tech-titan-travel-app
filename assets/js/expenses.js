@@ -21,6 +21,7 @@ function createBudget() {
     budgets[tripName] = { totalAmount, currency, remainingAmount: totalAmount };
     expenses[tripName] = [];
     currentTripName = tripName;
+    localStorage.setItem('budgets', JSON.stringify(budgets));
 
     alert(`Budget for "${tripName}" created successfully!`);
     updateCurrentTripDisplay();
