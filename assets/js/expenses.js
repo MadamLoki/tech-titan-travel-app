@@ -81,15 +81,47 @@ function displaySummary(tripName) {
     if (budgets[tripName]) {
         const totalSpent = calculateTotalSpent(tripName);
         const summary = `
-            <h3>Budget Summary for "${tripName}"</h3>
-            <p>Total Budget: ${budgets[tripName].totalAmount.toFixed(2)} ${budgets[tripName].currency}</p>
-            <p>Total Spent: ${totalSpent.toFixed(2)} ${budgets[tripName].currency}</p>
-            <p>Remaining Budget: ${budgets[tripName].remainingAmount.toFixed(2)} ${budgets[tripName].currency}</p>
-            <h4>Expenses:</h4>
-            <ul>
-                ${expenses[tripName].map(exp => `<li>${exp.amount.toFixed(2)} ${budgets[tripName].currency} - ${exp.category}</li>`).join('')}
-            </ul>
-        `;
+    <h3>Budget Summary for "${tripName}"</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total Budget</td>
+                <td>${budgets[tripName].totalAmount.toFixed(2)} ${budgets[tripName].currency}</td>
+            </tr>
+            <tr>
+                <td>Total Spent</td>
+                <td>${totalSpent.toFixed(2)} ${budgets[tripName].currency}</td>
+            </tr>
+            <tr>
+                <td>Remaining Budget</td>
+                <td>${budgets[tripName].remainingAmount.toFixed(2)} ${budgets[tripName].currency}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Expenses:</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${expenses[tripName].map(exp => `
+                <tr>
+                    <td>${exp.amount.toFixed(2)} ${budgets[tripName].currency}</td>
+                    <td>${exp.category}</td>
+                </tr>
+            `).join('')}
+        </tbody>
+    </table>
+`;
         summaryElement.innerHTML = summary;
     } else {
         summaryElement.innerHTML = '<p>No budget found. Please create a budget first.</p>';
@@ -101,7 +133,7 @@ function clearInputs(ids) {
 }
 
 function updateCurrentTripDisplay() {
-    document.getElementById('currentTripName').textContent = currentTripName || 'No Trip Selected';
+    document.getElementById('currentTripName').textContent = currentTripName || ' ';
 }
 
 // Initialize the page
