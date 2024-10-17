@@ -1,0 +1,24 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+}
+
+body.light-mode {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.navbar-light {
+    background-color: var(--background-color) !important;
+}
+
+.navbar-dark {
+    background-color: var(--background-color) !important;
+}

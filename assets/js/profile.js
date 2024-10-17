@@ -139,7 +139,8 @@ function loadProfileData() {
         function displayUserData(user) {
             const savedUser = getDataFromLocalStorage(user);
 
-            const firstNameElement = document.getElementById("firstName");
+            const 
+            firstNameElement = document.getElementById("firstName");
             const lastNameElement = document.getElementById("lastName");
             const emailElement = document.getElementById("email");
 
