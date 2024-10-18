@@ -60,8 +60,5 @@ function displayRandomQuote (){
 
 document.addEventListener('DOMContentLoaded', () => {
     displayRandomQuote();
-    console.log('Quote displayed!');
     setInterval(displayRandomQuote, 90000);
-    console.log('Quote updated every 90 seconds!');
-
 });

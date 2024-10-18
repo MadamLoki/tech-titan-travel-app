@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 pause: 'hover',
                 wrap: true,
             });
-            console.log('Carousel initialized!');
         }
         catch (error) {
             console.error('Error initializing Carousel:', error);
@@ -92,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeItem = event.relatedTarget;
         const city = activeItem.querySelector('.carousel-caption').textContent;
         carouselCaption.textContent = city;
-        console.log('Slide event fired! Moving to slide:', city);
     });
 });
 

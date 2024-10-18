@@ -73,19 +73,14 @@ function displayItinerary(itinerary) {
     // Display available attractions to add from the same city
     const selectedCity = cities.find(city => city.name === itinerary.city);
     if (selectedCity) {
-        newAttractionsDiv.innerHTML = `<form id="attractionsForm">
-                    ${selectedCity.attractions.map(attraction => `
-                        <div class="containerAttraction"> 
-                            <div class="attraction">
-                                <input class="form-check-input" type="checkbox" value="${attraction.name}" id="${attraction.name}">
-                                <label class="form-check-label" for="${attraction.name}">${attraction.name}</label>
-                            </div>
-                            <div class="time-date">
-                                <input type="date" placeholder="Date">
-                                <input type="time" placeholder="Time">
-                                ${attraction.link ? `<a href="${attraction.link}" target="_blank">More Info</a>` : ""}
-                            </div>
-                        </div>
+        newAttractionsDiv.innerHTML = `<form id="addAttractionForm">
+            ${selectedCity.attractions.map(attraction => `
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="${attraction.name}" id="${attraction.name}">
+                        <label class="form-check-label" for="${attraction.name}">${attraction.name}</label>
+                        <input type="date" class="form-control" placeholder="Date">
+                        <input type="time" class="form-control" placeholder="Time">
+                    </div>
             `).join('')}
             <button type="submit" class="btn btn-success mt-2">Add Selected Attractions</button>
         </form>`;
