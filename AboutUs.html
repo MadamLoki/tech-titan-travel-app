@@ -38,7 +38,7 @@
                             <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="./destinations.html">Destinations</a></li>
                             <li class="nav-item"><a class="nav-link" href="./budgettool.html">Budgeting Tool</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/#about">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
                             <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
                         </ul>
                         <!-- Dark Mode Toggle Button -->
@@ -50,6 +50,34 @@
                 </nav>
             </div>
         </header>
+
+        <!-- Main Carousel -->
+        <div id="carouselMain" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Carousel images dynamically added here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <div class="carousel-caption">
+                <!-- Dynamic capiton? -->
+            </div>
+        </div>
+
+        <!-- Quote Section -->
+        <figure class="text-end">
+            <blockquote class="blockquote">
+                <p id="quote" class="travel-quote"></p>
+            </blockquote>
+            <figcaption id="author" class="blockquote-footer">
+                <cite title="Good Reads"><i class="bi bi-book"></i>
+            </figcaption>
+        </figure>
 
         <article id="about" class="container about-section p-4 rounded shadow">
             <h2 class="text-center mb-4">About the Team</h2>
@@ -87,7 +115,8 @@
         <!-- Custom JS -->
         <script src="./assets/js/main.js"></script>
         <script src="./assets/js/logic.js"></script>
-        <script src="assets\js\AboutUs.js"></script>
+        <script src="./assets/js/quote.js"></script>
 
 </body>
+
 </html>
