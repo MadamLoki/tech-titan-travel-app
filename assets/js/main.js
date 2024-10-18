@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const caption = document.createElement('div');
             caption.classList.add('carousel-caption');
-            caption.textContent = image.cityNames || 'City Image';
+            caption.textContent = image.cityNames || 'JourneySync';
 
             item.appendChild(img);
             item.appendChild(caption);
