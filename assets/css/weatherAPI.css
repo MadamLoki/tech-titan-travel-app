@@ -1,0 +1,86 @@
+:root {
+    --primary-color: #3a7cc4;
+    --secondary-color: #6c757d;
+    --dark-color: #343a40;
+    --secondary-dark-color: #495057;
+    --light-color: #c2c2c2;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
+    --button-color: #6086af;
+}
+
+#weather-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 0;
+    margin: 10px;
+}
+
+.city {
+    flex: 0 0 auto;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--secondary-color);
+}
+
+.city:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.city h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.city p {
+    margin: 5px 0;
+    color: var(--secondary-dark-color);
+}
+
+.error {
+    color: var(--info-color);
+    text-align: center;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* For webkit browsers like Chrome and Safari */
+#weather-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+#weather-container::-webkit-scrollbar-track {
+    background: var(--light-color);
+}
+
+#weather-container::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 4px;
+}
+
+#weather-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-dark-color);
+}
+
+/* Dark mode */
+
+.dark-mode .city {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.dark-mode .city p {
+    color: var(--light-color);
+}

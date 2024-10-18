@@ -14,6 +14,7 @@
     <!-- Custom CSS -->
     <link href="./assets/css/style.css" rel="stylesheet">
     <link href="./assets/css/itinerary.css" rel="stylesheet">
+    <link href="./assets/css/weatherAPI.css" rel="stylesheet">
 </head>
 
 <body>
@@ -78,7 +79,10 @@
                 <cite title="Good Reads"><i class="bi bi-book"></i>
             </figcaption>
         </figure>
-        
+
+        <div id="weather-container"></div>
+
+
         <!-- City Content Section -->
         <div class="cityContentContainer">
             <article class="containerCity">
@@ -90,7 +94,8 @@
                     </select>
 
                     <div id="cityInfo"></div>
-                    <button class="toggle-button" id="saveButton" style="display: none;">Save Selected Attractions</button>
+                    <button class="toggle-button" id="saveButton" style="display: none;">Save Selected
+                        Attractions</button>
 
                     <h2>Your Itinerary</h2>
                     <div id="itineraryDiv" class="itineraryDiv"></div>
@@ -115,6 +120,8 @@
     <script src="./assets/js/itinerary.js"></script>
     <script src="./assets/js/cities.js"></script>
     <script src="./assets/js/quote.js"></script>
+    <script src="./assets/js/weatherAPI.js"></script>
+
 </body>
 
 </html>

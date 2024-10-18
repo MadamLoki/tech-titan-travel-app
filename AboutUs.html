@@ -13,72 +13,81 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="./assets/css/style.css" rel="stylesheet">
-    <link href="./assets/css/itinerary.css" rel="stylesheet">
-    <link href="assets\css\AboutUs.css" rel="stylesheet">
+    <link href="./assets/css/AboutUs.css" rel="stylesheet">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <main class="scope">
+        <!-- Header Section -->
+        <header>
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">JourneySync</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="city.html">Destination</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="budgettool.html">Budgeting tool</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="AboutUs.html">About us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="profile.html">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Light/Dark Mode Toggle -->
-                            <button class="btn btn-outline-secondary" id="theme-toggle"><i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
-                            </button>
-                        </li>
+                <div class="card-header">
+                    <div class="modal-header">
+                        <h1 class="header-brand"><i class="bi bi-compass"></i> JourneySync</h1>
+                        <p class="lead">Plan your next adventure with us!</p>
+                    </div>
+                </div>
+                <!-- Navigation Bar -->
+                <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./destinations.html">Destinations</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./budgettool.html">Budgeting Tool</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/#about">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
+                        </ul>
+                        <!-- Dark Mode Toggle Button -->
+                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button"
+                            aria-label="Toggle dark mode">
+                            <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <article id="about" class="container about-section p-4 rounded shadow">
+            <h2 class="text-center mb-4">About the Team</h2>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <p class="lead">
+                        JourneySync is a team of passionate developers who have come together to create a travel website
+                        that allows users to search for cities and view information about them. Our team consists of
+                        four talented members:
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><strong>Ade</strong> - Developer</li>
+                        <li><strong>Marvin</strong> - Developer</li>
+                        <li><strong>Sara</strong> - Developer</li>
+                        <li><strong>Will</strong> - Developer</li>
                     </ul>
+                    <p>
+                        Each member has contributed their unique skills to the project, from designing the website to
+                        writing the code that makes it work. We're excited to share JourneySync with you and hope it
+                        helps you plan your next adventure!
+                    </p>
                 </div>
             </div>
-        </nav>
-        
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+        </article>
 
-    <article id="about" class="container about-section p-4 rounded shadow">
-        <h2 class="text-center mb-4">About the Team</h2>
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <p class="lead">
-                    JourneySync is a team of passionate developers who have come together to create a travel website
-                    that allows users to search for cities and view information about them. Our team consists of
-                    four talented members:
-                </p>
-                <ul class="list-unstyled">
-                    <li><strong>Ade</strong> - Developer</li>
-                    <li><strong>Marvin</strong> - Developer</li>
-                    <li><strong>Sara</strong> - Developer</li>
-                    <li><strong>Will</strong> - Developer</li>
-                </ul>
-                <p>
-                    Each member has contributed their unique skills to the project, from designing the website to
-                    writing the code that makes it work. We're excited to share JourneySync with you and hope it
-                    helps you plan your next adventure!
-                </p>
+        <!-- Footer -->
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container text-center">
+                <p class="mb-0">&copy; JourneySync - Tech Titans</p>
             </div>
-        </div>
-    </article>
-    <script src="assets\js\AboutUs.js"></script>
+        </footer>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Custom JS -->
+        <script src="./assets/js/main.js"></script>
+        <script src="./assets/js/logic.js"></script>
+        <script src="assets\js\AboutUs.js"></script>
+
 </body>
+</html>
