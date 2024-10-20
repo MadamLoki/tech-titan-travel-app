@@ -1,8 +1,10 @@
-// Dark mode toggle
+// Dark mode toggle button and body element
 const toggleButton = document.getElementById('darkModeToggle');
 const body = document.body;
 
 // Function to toggle dark mode
+// This function toggles between light and dark modes by checking the current mode,
+// applying the new mode, and saving the new mode to local storage.
 function toggleMode() {
     const currentMode = body.classList.contains('dark-mode') ? 'dark' : 'light';
     const newMode = currentMode === 'light' ? 'dark' : 'light';
@@ -11,6 +13,8 @@ function toggleMode() {
 }
 
 // Function to apply the mode
+// This function applies the specified mode (light or dark) by adding or removing
+// the 'dark-mode' class to/from the body element and updating the icon accordingly.
 function applyMode(mode) {
     if (mode === 'dark') {
         body.classList.add('dark-mode');
@@ -23,6 +27,9 @@ function applyMode(mode) {
     }
 }
 
+// Event listener for DOMContentLoaded
+// This event listener ensures that the script runs after the DOM is fully loaded.
+// It adds a click event listener to the toggle button and applies the saved mode from local storage.
 document.addEventListener('DOMContentLoaded', () => {
     if (!toggleButton) {
         console.error('No toggle button found');
@@ -36,8 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Function to prompt user for their name and email
+// This function prompts the user to enter their first name, last name, and email.
+// If the user cancels any of the prompts, an alert is shown, and the function returns early.
 function promptUser() {
-
     const firstName = prompt("Please enter your first name:");
     if (firstName === null) {
         alert("You must enter your first name to continue.");
@@ -56,12 +64,6 @@ function promptUser() {
         return;
     }
 
-    const confirmInfo = confirm(`Is this information correct?\nName: ${firstName} ${lastName}\nEmail: ${email}`);
-    if (confirmInfo) {
-        alert("Thank you! Your information has been saved.");
-        window.location.href = './destinations.html';
-        localStorage.setItem('user', JSON.stringify({ firstName, lastName, email }));
-    } else {
-        alert("Please enter your information again.");
-    }
+    // Display the entered information
+    alert(`Thank you, ${firstName} ${lastName}. Your email is ${email}.`);
 }

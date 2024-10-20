@@ -43,8 +43,8 @@
                             <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
                         </ul>
                         <!-- Dark Mode Toggle Button -->
-                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button"
-                            aria-label="Toggle dark mode">
+                        <!-- Button to toggle between light and dark modes -->
+                        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2" type="button" aria-label="Toggle dark mode">
                             <i id="darkModeIcon" class="bi bi-brightness-high" data-state="light"></i>
                         </button>
                     </div>
@@ -53,37 +53,43 @@
         </header>
 
         <!-- Main Carousel -->
+        <!-- Bootstrap carousel for displaying images -->
         <div id="carouselMain" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <!-- Carousel images dynamically added here -->
             </div>
+            <!-- Previous button for carousel -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
+            <!-- Next button for carousel -->
             <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
             <div class="carousel-caption">
-                <!-- Dynamic capiton? -->
+                <!-- Dynamic caption will be updated here -->
             </div>
         </div>
 
         <!-- Quote Section -->
+        <!-- Section for displaying a travel-related quote -->
         <figure class="text-end">
             <blockquote class="blockquote">
                 <p id="quote" class="travel-quote"></p>
             </blockquote>
             <figcaption id="author" class="blockquote-footer">
-                <cite title="Good Reads"><i class="bi bi-book"></i>
+                <cite title="Good Reads"><i class="bi bi-book"></i></cite>
             </figcaption>
         </figure>
 
+        <!-- Weather Container -->
+        <!-- Container for displaying weather information -->
         <div id="weather-container"></div>
 
-
         <!-- City Content Section -->
+        <!-- Section for displaying city details -->
         <div class="cityContentContainer">
             <article class="containerCity">
                 <div id="cityContent" class="container about-section p-4 rounded shadow">

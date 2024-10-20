@@ -1,17 +1,23 @@
-// function to load profile data
-
+// Function to load profile data
+// This function sets up an event listener for the DOMContentLoaded event
+// and defines functions to get data from local storage and display user data.
 function loadProfileData() {
     document.addEventListener("DOMContentLoaded", () => {
+        // Function to get data from local storage
+        // This function retrieves the user data from local storage and returns it.
+        // If no data is found, it returns the provided default user object.
         function getDataFromLocalStorage(user) {
             const storedData = JSON.parse(localStorage.getItem("user"));
             return storedData || user;
         }
 
+        // Function to display user data
+        // This function retrieves the user data from local storage and updates the DOM elements
+        // with the user's first name, last name, and email.
         function displayUserData(user) {
             const savedUser = getDataFromLocalStorage(user);
 
-            const 
-            firstNameElement = document.getElementById("firstName");
+            const firstNameElement = document.getElementById("firstName");
             const lastNameElement = document.getElementById("lastName");
             const emailElement = document.getElementById("email");
 
@@ -24,6 +30,8 @@ function loadProfileData() {
             }
         }
 
+        // Display default user data
+        // This function call displays the default user data when the page loads.
         displayUserData({
             firstName: "First Name",
             lastName: "Last Name",
@@ -33,16 +41,18 @@ function loadProfileData() {
     });
 }
 
+// Call the function to load profile data
 loadProfileData();
 
-
-
+// Get references to DOM elements for city info, itinerary, and new attractions
 const cityInfo = document.getElementById('cityInfo');
 const itineraryDiv = document.getElementById('itineraryDiv');
 const newAttractionsDiv = document.getElementById('newAttractionsDiv');
 const saveChangesBtn = document.getElementById('saveChanges');
 
-// Load saved itinerary from localStorage
+// Function to load saved itinerary from local storage
+// This function retrieves the saved itinerary from local storage and updates the DOM elements
+// with the itinerary data.
 function loadItinerary() {
     const savedItinerary = localStorage.getItem('savedItinerary');
     if (savedItinerary) {

@@ -1,10 +1,14 @@
+// Event listener for DOMContentLoaded
+// This event listener ensures that the script runs after the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
+    // Get references to DOM elements
     const cityDropdown = document.getElementById("citySelect");
     const cityInfo = document.getElementById("cityInfo");
     const saveButton = document.getElementById('saveButton');
     const itineraryDiv = document.getElementById('itineraryDiv');
 
     // Populate city dropdown
+    // This function populates the city dropdown with options from the cities array.
     cities.forEach(city => {
         const option = document.createElement("option");
         option.text = city.name;
@@ -12,17 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Display city information
+    // This event listener updates the city information section when a city is selected from the dropdown.
     cityDropdown.addEventListener('change', (event) => {
         const selectedCityName = event.target.value;
         const selectedCity = cities.find(city => city.name === selectedCityName);
 
         if (selectedCity) {
+            // Create an object with the selected city's data
             const selectedCityData = {
                 name: selectedCity.name,
                 bestTimeToVisit: selectedCity.bestTimeToVisit,
                 fact: selectedCity.fact,
                 attractions: selectedCity.attractions
             };
+
+            // Update the city information section with the selected city's data
             cityInfo.innerHTML = `
                 <h2>${selectedCityData.name}</h2>
                 <p><strong>Best Time to Visit:</strong> ${selectedCityData.bestTimeToVisit}</p>
@@ -43,10 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `).join('')}
                 </form>`;
-            saveButton.style.display = "block"; // Show save button
+            // Show the save button
+            saveButton.style.display = "block";
         } else {
-            cityInfo.innerHTML = "";
-            saveButton.style.display = "none"; // Hide save button
+            // Hide the save button if no city is selected
+            saveButton.style.display = "none";
         }
     });
 
@@ -85,7 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Please select at least one attraction and set a date and time for it.");
         }
     });
-    //load itinerary from local storage and update the UI on page load
+
+    // Load itinerary from local storage and update the UI on page load
     function loadItinerary() {
         const savedItinerary = localStorage.getItem('savedItinerary');
         if (savedItinerary) {
@@ -106,11 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     dateInput.value = attraction.date;
                     timeInput.value = attraction.time;
                 }
-            }
-            )
+            });
         }
-
     }
+
     window.addEventListener('storage', (event) => {
         if (event.key === 'savedItinerary') {
             const updatedItinerary = JSON.parse(event.newValue);
@@ -119,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const ititneraryList = updatedItinerary.attractions.map(attr =>
                 `<p>${attr.name} on ${attr.date} at ${attr.time}</p>`
             ).join('');
-            itineraryDiv.innerHTML += itineraryList;
+            itineraryDiv.innerHTML += ititneraryList;
 
             updatedItinerary.attractions.forEach(attraction => {
                 const checkbox = document.getElementById(attraction.name);
@@ -131,11 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     timeInput.value = attraction.time;
                 }
             });
-
         }
-
-
     });
+
     loadItinerary();
 });
-

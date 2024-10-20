@@ -1,3 +1,5 @@
+/* Root variables for color scheme */
+/* These variables define the primary, secondary, dark, light, success, info, and button colors used throughout the stylesheet */
 :root {
     --primary-color: #3a7cc4;
     --secondary-color: #6c757d;
@@ -9,41 +11,51 @@
     --button-color: #6086af;
 }
 
+/* Weather container styles */
+/* This container holds the weather information for multiple cities */
 #weather-container {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 10px 0;
-    margin: 10px;
+    display: flex; /* Use flexbox layout */
+    flex-wrap: nowrap; /* Prevent wrapping of flex items */
+    justify-content: space-between; /* Distribute space between items */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    gap: 20px; /* Space between flex items */
+    padding: 10px 0; /* Vertical padding */
+    margin: 10px; /* Margin around the container */
 }
 
+/* City card styles */
+/* Each city card displays weather information for a single city */
 .city {
-    flex: 0 0 auto;
-    width: 200px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    border: 1px solid var(--secondary-color);
+    flex: 0 0 auto; /* Prevent flex item from growing or shrinking */
+    width: 200px; /* Fixed width for each city card */
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Padding inside the city card */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transition for transform property */
+    border: 1px solid var(--secondary-color); /* Border with secondary color */
 }
 
+/* Hover effect for city card */
+/* This effect is applied when the user hovers over a city card */
 .city:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px); /* Move the card up slightly */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow for emphasis */
 }
 
+/* City card heading styles */
+/* Styles for the city name heading inside the city card */
 .city h2 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    color: var(--primary-color);
+    margin-top: 0; /* Remove top margin */
+    font-size: 1.2rem; /* Font size for the heading */
+    color: var(--primary-color); /* Primary color for the heading text */
 }
 
+/* City card paragraph styles */
+/* Styles for the paragraphs inside the city card */
 .city p {
-    margin: 5px 0;
-    color: var(--secondary-dark-color);
+    margin: 5px 0; /* Vertical margin for paragraphs */
+    color: var(--secondary-dark-color); /* Secondary dark color for paragraph text */
 }
 
 .error {

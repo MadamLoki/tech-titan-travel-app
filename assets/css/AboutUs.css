@@ -1,24 +1,34 @@
+/* Root variables for color scheme */
+/* These variables define the background and text colors used throughout the stylesheet */
 :root {
-    --background-color: #ffffff;
-    --text-color: #000000;
+    --background-color: #ffffff; /* Default background color (white) */
+    --text-color: #000000; /* Default text color (black) */
 }
 
+/* Light mode styles */
+/* Styles for the body element when light mode is active */
 body.light-mode {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--background-color); /* Set background color to white */
+    color: var(--text-color); /* Set text color to black */
 }
 
+/* Dark mode styles */
+/* Styles for the body element when dark mode is active */
 body.dark-mode {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    --background-color: #121212; /* Dark background color */
+    --text-color: #ffffff; /* Light text color */
+    background-color: var(--background-color); /* Apply dark background color */
+    color: var(--text-color); /* Apply light text color */
 }
 
+/* Light mode navbar styles */
+/* Styles for the navbar when light mode is active */
 .navbar-light {
-    background-color: var(--background-color) !important;
+    background-color: var(--background-color) !important; /* Set navbar background color to white */
 }
 
+/* Dark mode navbar styles */
+/* Styles for the navbar when dark mode is active */
 .navbar-dark {
-    background-color: var(--background-color) !important;
+    background-color: var(--background-color) !important; /* Set navbar background color to dark */
 }

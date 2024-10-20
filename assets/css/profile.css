@@ -1,3 +1,5 @@
+/* Root variables for color scheme */
+/* These variables define the primary, secondary, dark, light, and info colors used throughout the stylesheet */
 :root {
     --primary-color: #3a7cc4;
     --secondary-color: #6c757d;
@@ -7,6 +9,8 @@
     --info-color: #17a2b8;
 }
 
+/* Profile section styles */
+/* Styles for the profile section, including flexbox layout, padding, margin, and border radius */
 .profile-section {
     display: flex;
     justify-content: space-between;
@@ -15,16 +19,22 @@
     border-radius: 0.25rem;
 }
 
+/* Profile section heading styles */
+/* Styles for the h5 elements within the profile section, including color and text decoration */
 .profile-section h5 {
     color: var(--primary-color);
     text-decoration: underline;
 }
 
+/* Card body styles */
+/* Styles for the card body, including background color and border radius */
 .card-body {
     background-color: var(--light-color);
     border-radius: 10px;
 }
 
+/* Card title styles */
+/* Styles for the card title, including color, font family, font size, and text decoration */
 .card-title {
     color: var(--dark-color);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -32,17 +42,23 @@
     text-decoration: underline;
 }
 
+/* Card text styles */
+/* Styles for the card text, including font family, font size, and color */
 .card-text {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     color: var(--dark-color);
 }
 
+/* Itinerary feature styles */
+/* Styles for the itinerary feature, including flex property and margin */
 .itinerary-feature {
     flex: 1;
     margin-right: 20px;
 }
 
+/* Attraction extra styles */
+/* Styles for the attraction extra, including top margin */
 .attraction-extra {
     margin-top: 1rem;
     padding: 1rem;

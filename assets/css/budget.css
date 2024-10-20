@@ -1,3 +1,5 @@
+/* Root variables for color scheme */
+/* These variables define the primary, secondary, dark, light, secondary light, success, info, and button colors used throughout the stylesheet */
 :root {
     --primary-color: #3a7cc4;
     --secondary-color: #6c757d;
@@ -10,18 +12,24 @@
     --button-color: #6086af;
 }
 
+/* Card body styles */
+/* Styles for the card body, including background color, border radius, and padding */
 .card-body {
     background-color: var(--light-color);
     border-radius: 10px;
     padding: 20px;
 }
 
+/* Card title styles */
+/* Styles for the card title, including color, font family, and font size */
 .card-title {
     color: var(--dark-color);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 25px;
 }
 
+/* Card text styles */
+/* Styles for the card text, including font size, color, white-space property, and padding */
 .card-text {
     font-size: 20px;
     color: var(--dark-color);
@@ -29,6 +37,8 @@
     padding-inline: 20px;
 }
 
+/* Summary card styles */
+/* Styles for the summary card, including background color, border radius, padding, and margin */
 .summary-card {
     background-color: var(--secondary-color);
     border-radius: 10px;
@@ -36,6 +46,8 @@
     margin: 10px;
 }
 
+/* Table styles */
+/* Styles for the table, including margin, border radius, box shadow, and width */
 .table {
     margin: 15px;
     border-radius: 10px;
@@ -43,62 +55,87 @@
     width: 90%;
 }
 
+/* Table striped styles */
+/* Styles for the striped table, including border radius */
 .table-striped {
     border-radius: 10px;
 }
 
+/* Table striped header styles */
+/* Styles for the table striped headers, including text decoration */
 .table-striped th {
     text-decoration: underline;
 }
 
+/* Table striped row styles */
+/* Styles for the even rows in the striped table, including background color */
 .table-striped>tbody>tr:nth-of-type(even) {
     background-color: var(--secondary-light-color);
 }
 
-
 /* Dark Mode */
 
+/* Dark mode styles */
+/* Styles for dark mode, including background color and text color */
 .dark-mode {
     background-color: var(--dark-color);
     color: var(--light-color);
 }
 
+/* Dark mode card body styles */
+/* Styles for the card body in dark mode, including background color */
 .dark-mode .card-body {
     background-color: var(--secondary-dark-color);
 }
 
-.dark-mode .card-title  {
+/* Dark mode card title styles */
+/* Styles for the card title in dark mode, including color and text decoration */
+.dark-mode .card-title {
     color: var(--info-color);
     text-decoration: underline;
 }
 
+/* Dark mode card text styles */
+/* Styles for the card text in dark mode, including color */
 .dark-mode .card-text {
     color: var(--light-color);
 }
 
+/* Dark mode card body heading styles */
+/* Styles for the h4 elements within the card body in dark mode, including color and text decoration */
 .dark-mode .card-body h4 {
     color: var(--info-color);
     text-decoration: underline;
 }
 
+/* Dark mode summary styles */
+/* Styles for the summary in dark mode, including background color */
 .dark-mode .summary {
     background-color: var(--dark-color);
 }
 
+/* Dark mode table striped styles */
+/* Styles for the striped table in dark mode, including text color and background color */
 .dark-mode .table-striped {
     color: var(--light-color);
     background-color: var(--secondary-dark-color);
 }
 
+/* Dark mode table striped header styles */
+/* Styles for the table striped headers in dark mode, including text color and background color */
 .dark-mode .table-striped th {
     color: var(--info-color);
     background-color: var(--dark-color);
 }
 
+/* Dark mode table striped odd row styles */
+/* Styles for the odd rows in the striped table in dark mode, including background color */
 .dark-mode .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: var(--secondary-color);
 }
 
+/* Dark mode table striped even row styles */
+/* Styles for the even rows in the striped table in dark mode, including background color */
 .dark-mode .table-striped>tbody>tr:nth-of-type(even) {
-    background-color: var(--secondary-dark-colordark-color);
+    background-color: var(--secondary-dark-color);
 }

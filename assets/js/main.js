@@ -29,10 +29,14 @@ async function fetchRandomCityImage(count) {
     }
 }
 
+// Event listener for DOMContentLoaded
+// This event listener ensures that the script runs after the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
     const carouselInner = document.querySelector('.carousel-inner');
     const carouselCaption = document.querySelector('.carousel-caption');
 
+    // Function to create carousel items
+    // This function creates carousel items from the provided images and appends them to the carousel.
     function createCarouselItem(images) {
         images.forEach((image, index) => {
             const item = document.createElement('div');
@@ -55,15 +59,23 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Carousel Items created!');
     }
 
+    // this function kinda works but kinda doesnt. it shows "JourneySync" instead of the city name from the search
+
+    // Function to generate alt text from URL
+    // This function extracts the file name from the URL, removes the file extension,
+    // replaces hyphens and underscores with spaces, and capitalizes the first letter.
     function getAltTextFromUrl(url) {
         // Extract file name from URL
         const fileName = url.substring(url.lastIndexOf('/') + 1);
         // Remove file extension and replace hyphens with spaces
         const altText = fileName.split('.')[0].replace(/[-_]/g, ' ');
-        //capitalize first letter of alt text
+        // Capitalize first letter of alt text
         return altText.charAt(0).toUpperCase() + altText.slice(1);
     }
 
+    // Function to initialize the carousel
+    // This async function fetches random city images, creates carousel items,
+    // and initializes the Bootstrap carousel with specified options.
     async function initCarousel() {
         try {
             const images = await fetchRandomCityImage(10);
@@ -93,65 +105,3 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselCaption.textContent = city;
     });
 });
-
-
-
-
-
-
-/* 
-
-function createCarouselItems(images) {
-    const carouselInner = document.querySelector('.carousel-inner');
-    carouselInner.innerHTML = ''; // Clear existing items
-    images.forEach((image, index) => {
-        const item = document.createElement('div');
-        item.classList.add('carousel-item');
-        if (index === 0) item.classList.add('active');
-
-        const img = document.createElement('img');
-        img.src = image.urls.regular;
-        img.classList.add('carousel-image');
-        img.alt = getAltTextFromUrl(image.urls.regular);
-
-        const caption = document.createElement('div');
-        caption.classList.add('carousel-caption', 'd-none', 'd-md-block');
-        const captionText = document.createElement('h5');
-        captionText.textContent = image.alt_description || 'City Image';
-        caption.appendChild(captionText);
-
-        item.appendChild(caption);
-
-        item.appendChild(img);
-        carouselInner.appendChild(item);
-    });
-    console.log('Carousel Items created!');
-}
-
-// Initialize carousel
-async function initCarousel() {
-    const images = await fetchRandomCityImage(10);
-    createCarouselItems(images);
-    try {
-    // Initialize Bootstrap Carousel with options
-    const carouselInterval = 100000;
-    new bootstrap.Carousel(document.getElementById('carouselMain'), {
-        interval: carouselInterval,
-        pause: 'hover',
-        wrap: true,
-    });
-    console.log('Carousel initialized!'); 
-        } catch (error) {
-            console.error('Error initializing Carousel:', error);
-        }
-}
-
-
-window.addEventListener('DOMContentLoaded', initCarousel);
-
-// Carousel event listener for slide event on Main Page
-const myCarousel = document.getElementById('carouselMain');
-
-myCarousel.addEventListener('slide.bs.carousel', (event) => {
-    /* console.log('Slide event fired! Moving to slide:', event.to); 
-}); */

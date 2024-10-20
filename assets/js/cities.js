@@ -1,3 +1,5 @@
+// Array of cities  best time to visit, attractions, restaurants, and fun facts
+
 // Top 10 US cities data
 const cities = [
     {

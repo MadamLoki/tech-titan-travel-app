@@ -201,6 +201,9 @@ function deleteBudget() {
         return;
     }
 
+    // Function to delete the budget for the current trip
+    // This function confirms the deletion, removes the budget and expenses for the current trip from local storage,
+    // updates the display, and alerts the user.
     if (confirm(`Are you sure you want to delete the budget for "${currentTripName}"?`)) {
         delete budgets[currentTripName];
         delete expenses[currentTripName];
@@ -219,6 +222,9 @@ function deleteBudget() {
     }
 }
 
+// Function to clear all budgets and expenses
+// This function confirms the action, removes all budgets and expenses from local storage,
+// clears the budgets and expenses objects, updates the display, and alerts the user.
 function clearBudget() {
     if (confirm('Are you sure you want to clear all budgets and expenses?')) {
         localStorage.removeItem('budgets');
@@ -233,13 +239,15 @@ function clearBudget() {
     }
 }
 
+// Function to clear input fields
+// This function takes an array of input field IDs and clears their values.
 function clearInputs(ids) {
     ids.forEach(id => document.getElementById(id).value = '');
 }
 
+// Function to update the display of the current trip name
+// This function updates the text content of the element with the ID 'currentTripName'
+// to show the current trip name or a blank space if no trip is selected.
 function updateCurrentTripDisplay() {
     document.getElementById('currentTripName').textContent = currentTripName || ' ';
 }
-
-
-

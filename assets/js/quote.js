@@ -1,4 +1,6 @@
-const quote = [
+// Array of quote objects
+// Each object contains a quote and its author
+const quotes = [
     {
         quote: "Not all who wander are lost.",
         author: "J.R.R. Tolkien"
@@ -47,18 +49,27 @@ const quote = [
         quote: "When preparing to travel, lay out all your clothes and all your money. Then take half the clothes and twice the money.",
         author: "Susan Heller"
     }
-]
+];
 
-function displayRandomQuote (){
+// Function to display a random quote
+// This function selects a random quote from the quotes array and updates the DOM elements with the quote and author.
+function displayRandomQuote() {
     const quoteElement = document.getElementById('quote');
     const authorElement = document.getElementById('author');
-    const randomQuote = quote[Math.floor(Math.random() * quote.length)];
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     quoteElement.textContent = randomQuote.quote;
     authorElement.textContent = randomQuote.author;
 }
 
-
+// Event listener for DOMContentLoaded
+// This event listener ensures that the script runs after the DOM is fully loaded.
+// It calls the displayRandomQuote function to display a random quote when the page loads.
 document.addEventListener('DOMContentLoaded', () => {
     displayRandomQuote();
-    setInterval(displayRandomQuote, 90000);
+
+    // Optional: Add a button to randomize the quote
+    const randomizeButton = document.getElementById('randomizeButton');
+    if (randomizeButton) {
+        randomizeButton.addEventListener('click', displayRandomQuote);
+    }
 });
