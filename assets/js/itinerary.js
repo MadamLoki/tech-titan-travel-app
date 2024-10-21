@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    saveButton.addEventListener('click', () => {
+    saveButton.addEventListener('click', () => {// Save the selected itinerary to local storage
         const selectedCity = cityDropdown.value;
         const selectedAttractions = [];
         const checkboxes = document.querySelectorAll('#cityInfo input[type="checkbox"]:checked');
 
-        checkboxes.forEach(checkbox => {
+        checkboxes.forEach(checkbox => {// Get the date and time for each selected attraction
             const containerAttraction = checkbox.closest('.containerAttraction');
             if (containerAttraction) {
                 const dateInput = containerAttraction.querySelector('input[type="date"]');
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const date = dateInput ? dateInput.value : '';
                 const time = timeInput ? timeInput.value : '';
 
-                if (date && time) {
+                if (date && time) {// Add the selected attraction to the itinerary
                     selectedAttractions.push({
                         name: checkbox.value,
                         date: date,
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (selectedAttractions.length > 0) {
+        if (selectedAttractions.length > 0) {// Display the selected itinerary
             itineraryDiv.innerHTML = `<h3>Your Selected Itinerary</h3>`;
             const itineraryList = selectedAttractions.map(attr =>
                 `<p>${attr.name} on ${attr.date} at ${attr.time}</p>`
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ).join('');
             itineraryDiv.innerHTML += itineraryList;
 
-            itinerary.attractions.forEach(attraction => {
+            itinerary.attractions.forEach(attraction => {// Check the checkboxes and populate the date and time inputs
                 const checkbox = document.getElementById(attraction.name);
                 const dateInput = document.getElementById(`date-${attraction.name}`);
                 const timeInput = document.getElementById(`time-${attraction.name}`);
@@ -120,17 +120,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    window.addEventListener('storage', (event) => {
+    window.addEventListener('storage', (event) => {// Update the UI when the itinerary is updated in another tab
         if (event.key === 'savedItinerary') {
             const updatedItinerary = JSON.parse(event.newValue);
             cityDropdown.value = updatedItinerary.city;
-            itineraryDiv.innerHTML = `<h3>Your Selected Itinerary</h3>`;
+            itineraryDiv.innerHTML = `<h3>Your Selected Itinerary</h3>`;// Display the updated itinerary
             const ititneraryList = updatedItinerary.attractions.map(attr =>
                 `<p>${attr.name} on ${attr.date} at ${attr.time}</p>`
             ).join('');
             itineraryDiv.innerHTML += ititneraryList;
 
-            updatedItinerary.attractions.forEach(attraction => {
+            updatedItinerary.attractions.forEach(attraction => {// Check the checkboxes and populate the date and time inputs
                 const checkbox = document.getElementById(attraction.name);
                 const dateInput = document.getElementById(`date-${attraction.name}`);
                 const timeInput = document.getElementById(`time-${attraction.name}`);
@@ -138,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     checkbox.checked = true;
                     dateInput.value = attraction.date;
                     timeInput.value = attraction.time;
-                }
+                }//
             });
         }
     });
 
-    loadItinerary();
+    loadItinerary();// Load the itinerary when the page loads
 });
