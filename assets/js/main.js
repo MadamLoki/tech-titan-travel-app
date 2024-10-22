@@ -80,7 +80,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     myCarousel.addEventListener('slide.bs.carousel', (event) => { //active item is what is currently being displayed. 
         const activeItem = event.relatedTarget; 
-        const city = activeItem.querySelector('.carousel-caption').textContent;
-        carouselCaption.textContent = city;
     });
 });

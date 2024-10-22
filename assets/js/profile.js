@@ -77,7 +77,7 @@ function displayItinerary(itinerary) {
                 <button class="btn btn-danger btn-sm remove-btn" data-index="${index}">Remove</button>
             </p>
         </div>
-    `).join('');
+    `).join(''); // creates all elements into an array and joins them into a string to display on the page.
     itineraryDiv.innerHTML += attractionList;
 
     // Display available attractions to add from the same city

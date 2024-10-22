@@ -63,7 +63,9 @@ function promptUser() {
         alert("You must enter your email to continue.");
         return;
     }
+    localStorage.setItem('user', JSON.stringify({ firstName, lastName, email }));
 
     // Display the entered information
     alert(`Thank you, ${firstName} ${lastName}. Your email is ${email}.`);
+    console.log('User information collected', { firstName, lastName, email });
 }
