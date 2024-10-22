@@ -38,7 +38,7 @@ async function fetchWeather(city) {
 }
 
 // Function to display weather data
-// This function creates a new div element for the city and populates it with the weather data.
+// This function creates a new element for the city and populates it with the weather data.
 // It then appends the div to the weatherContainer.
 function displayWeather(data) {
     const cityDiv = document.createElement('div');

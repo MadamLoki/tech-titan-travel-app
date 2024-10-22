@@ -15,13 +15,13 @@ function loadProfileData() {
         // This function retrieves the user data from local storage and updates the DOM elements
         // with the user's first name, last name, and email.
         function displayUserData(user) {
-            const savedUser = getDataFromLocalStorage(user);
+            const savedUser = getDataFromLocalStorage(user); // Get user data from local storage
 
-            const firstNameElement = document.getElementById("firstName");
-            const lastNameElement = document.getElementById("lastName");
+            const firstNameElement = document.getElementById("firstName"); // Get DOM element for first name, last name and email that was stored in local storage
+            const lastNameElement = document.getElementById("lastName"); 
             const emailElement = document.getElementById("email");
 
-            if (firstNameElement && lastNameElement && emailElement) {
+            if (firstNameElement && lastNameElement && emailElement) { // Check if elements exist, then update the text content
                 firstNameElement.textContent = savedUser.firstName;
                 lastNameElement.textContent = savedUser.lastName;
                 emailElement.textContent = savedUser.email;
@@ -54,7 +54,7 @@ const saveChangesBtn = document.getElementById('saveChanges');
 // This function retrieves the saved itinerary from local storage and updates the DOM elements
 // with the itinerary data.
 function loadItinerary() {
-    const savedItinerary = localStorage.getItem('savedItinerary');
+    const savedItinerary = localStorage.getItem('savedItinerary'); // Get saved itinerary from local storage
     if (savedItinerary) {
         const itinerary = JSON.parse(savedItinerary);
         displayItinerary(itinerary);
@@ -81,7 +81,7 @@ function displayItinerary(itinerary) {
     itineraryDiv.innerHTML += attractionList;
 
     // Display available attractions to add from the same city
-    const selectedCity = cities.find(city => city.name === itinerary.city);
+    const selectedCity = cities.find(city => city.name === itinerary.city); // this gets the selected city, then creates a form with checkboxes for each attraction.
     if (selectedCity) {
         newAttractionsDiv.innerHTML = `<form id="addAttractionForm">
             ${selectedCity.attractions.map(attraction => `
@@ -97,7 +97,7 @@ function displayItinerary(itinerary) {
     }
 
     // Add event listeners for removing attractions
-    document.querySelectorAll('.remove-btn').forEach(button => {
+    document.querySelectorAll('.remove-btn').forEach(button => { // this adds an event listener to each remove button to remove the attraction from the itinerary.
         button.addEventListener('click', (e) => {
             const index = e.target.getAttribute('data-index');
             removeAttraction(index);
@@ -139,15 +139,15 @@ function addAttractions(itinerary) {
 
 // Save itinerary to localStorage and update UI
 function saveItinerary(itinerary) {
-    localStorage.setItem('savedItinerary', JSON.stringify(itinerary));
+    localStorage.setItem('savedItinerary', JSON.stringify(itinerary)); // Save the updated itinerary to local storage
     displayItinerary(itinerary); // Refresh the UI with the updated itinerary
 }
 
 // Save changes when "Save Changes" button is clicked
 saveChangesBtn.addEventListener('click', () => {
-    const savedItinerary = JSON.parse(localStorage.getItem('savedItinerary'));
-    savedItinerary.attractions.forEach((attr, index) => {
-        attr.date = document.getElementById(`date-${index}`).value;
+    const savedItinerary = JSON.parse(localStorage.getItem('savedItinerary')); // Get the saved itinerary from local storage
+    savedItinerary.attractions.forEach((attr, index) => { // Update the date and time for each attraction
+        attr.date = document.getElementById(`date-${index}`).value; // this gets the date and time values from the input fields and updates the saved itinerary.
         attr.time = document.getElementById(`time-${index}`).value;
     });
     saveItinerary(savedItinerary);

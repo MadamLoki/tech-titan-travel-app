@@ -157,7 +157,7 @@ const travelChecklistData = [
 // This function iterates over the checklistCategories array and creates HTML elements
 // for each category and item, then appends them to the checklist container in the DOM.
 
-function renderChecklist() {
+function renderChecklist() { // this function creates the checklist from the travelChecklistData array, then allows the user to check off items and display the checklist in the profile
     const checklist = document.getElementById('checklist');
     checklist.innerHTML = travelChecklistData.map(category => `
         <div class="category">

@@ -2,7 +2,7 @@
 const UNSPLASH_ACCESS_KEY = '592hvox9s4ckVC4mR6HUu0LTqCZlb2ChiAWDJ0UV128'; // Replace with your actual Unsplash API key
 const UNSPLASH_API_URL = 'https://api.unsplash.com/search/photos';
 
-const cityNames = [
+const cityNames = [ // this is an array of selected city names to search for images
     "New York",
     "Las Vegas",
     "Denver",
@@ -13,19 +13,19 @@ const cityNames = [
     "New Orleans",
     "Miami",
     "San Diego",
-    "Travel",
+    "Travel", // this is a default search term in case the city names don't return any images
 ];
 
-async function fetchRandomCityImage(count) {
-    try {
+async function fetchRandomCityImage(count) { // this function fetches random city images from the Unsplash API
+    try { // this try block catches any errors that occur during the fetch
         // Fetch random city image from Unsplash API
         const response = await fetch(`${UNSPLASH_API_URL}?query=${cityNames}&client_id=${UNSPLASH_ACCESS_KEY}&per_page=${count}`);
         const data = await response.json();
         return data.results;
     }
-    catch (error) {
+    catch (error) { // this catch block logs an error message if the fetch fails
         console.error('Error fetching Images:', error);
-        return [];
+        return []; // this returns an empty array if the fetch fails
     }
 }
 
@@ -33,7 +33,6 @@ async function fetchRandomCityImage(count) {
 // This event listener ensures that the script runs after the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
     const carouselInner = document.querySelector('.carousel-inner');
-    const carouselCaption = document.querySelector('.carousel-caption');
 
     // Function to create carousel items
     // This function creates carousel items from the provided images and appends them to the carousel.
@@ -46,47 +45,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.src = image.urls.regular;
             img.classList.add('carousel-image');
-            img.alt = getAltTextFromUrl(image.urls.regular);
-
-            const caption = document.createElement('div');
-            caption.classList.add('carousel-caption');
-            caption.textContent = image.cityNames || 'JourneySync';
 
             item.appendChild(img);
-            item.appendChild(caption);
             carouselInner.appendChild(item);
         });
         console.log('Carousel Items created!');
     }
 
-    // this function kinda works but kinda doesnt. it shows "JourneySync" instead of the city name from the search
-
-    // Function to generate alt text from URL
-    // This function extracts the file name from the URL, removes the file extension,
-    // replaces hyphens and underscores with spaces, and capitalizes the first letter.
-    function getAltTextFromUrl(url) {
-        // Extract file name from URL
-        const fileName = url.substring(url.lastIndexOf('/') + 1);
-        // Remove file extension and replace hyphens with spaces
-        const altText = fileName.split('.')[0].replace(/[-_]/g, ' ');
-        // Capitalize first letter of alt text
-        return altText.charAt(0).toUpperCase() + altText.slice(1);
-    }
-
     // Function to initialize the carousel
     // This async function fetches random city images, creates carousel items,
     // and initializes the Bootstrap carousel with specified options.
-    async function initCarousel() {
+    async function initCarousel() { // this function initializes the carousel, fetches the images, and creates the carousel items, and initializes the carousel with the specified options
         try {
-            const images = await fetchRandomCityImage(10);
-            createCarouselItem(images);
+            const images = await fetchRandomCityImage(10); // this fetches the images from the unsplash API, 10 indicates the amount of images to fetch
+            createCarouselItem(images); // this creates the carousel items
 
             // Initialize Bootstrap Carousel with options
-            const carouselInterval = 100000;
+            const carouselInterval = 6000; // this is the time in milliseconds for the carousel to change
             new bootstrap.Carousel(document.getElementById('carouselMain'), {
-                interval: carouselInterval,
-                pause: 'hover',
-                wrap: true,
+                interval: carouselInterval, // this calls the time in milliseconds for the carousel to change
+                pause: 'hover', // this pauses the carousel when the mouse hovers over it
+                wrap: true, // this loops the carousel back to the beginning when it reaches the end
             });
         }
         catch (error) {
@@ -99,8 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //carousel event listerner for slide event
     const myCarousel = document.getElementById('carouselMain');
 
-    myCarousel.addEventListener('slide.bs.carousel', (event) => {
-        const activeItem = event.relatedTarget;
+    myCarousel.addEventListener('slide.bs.carousel', (event) => { //active item is what is currently being displayed. 
+        const activeItem = event.relatedTarget; 
         const city = activeItem.querySelector('.carousel-caption').textContent;
         carouselCaption.textContent = city;
     });

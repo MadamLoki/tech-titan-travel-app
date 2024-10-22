@@ -30,7 +30,7 @@ function createBudget() {
         return;
     }
 
-    if (budgets[tripName]) {
+    if (budgets[tripName]) { // Check if a budget for the trip name already exists, and alert the user if it does
         alert(`A budget for "${tripName}" already exists. Please use a different name or adjust the existing budget.`);
         return;
     }
@@ -164,7 +164,7 @@ function saveBudget() {
     
 }
 
-function loadBudget() {
+function loadBudget() { // Function to load the budget from local storage, if available
     const savedBudgets = JSON.parse(localStorage.getItem('budgets'));
     const savedExpenses = JSON.parse(localStorage.getItem('expenses'));
     const savedCurrentTripName = localStorage.getItem('currentTripName');
@@ -195,7 +195,7 @@ function loadBudget() {
     }
 };
 
-function deleteBudget() {
+function deleteBudget() { // Function to delete the budget for the current trip, if available
     if (!currentTripName) {
         alert("Please create or select a trip first.");
         return;
@@ -225,7 +225,7 @@ function deleteBudget() {
 // Function to clear all budgets and expenses
 // This function confirms the action, removes all budgets and expenses from local storage,
 // clears the budgets and expenses objects, updates the display, and alerts the user.
-function clearBudget() {
+function clearBudget() { 
     if (confirm('Are you sure you want to clear all budgets and expenses?')) {
         localStorage.removeItem('budgets');
         localStorage.removeItem('expenses');
@@ -242,7 +242,7 @@ function clearBudget() {
 // Function to clear input fields
 // This function takes an array of input field IDs and clears their values.
 function clearInputs(ids) {
-    ids.forEach(id => document.getElementById(id).value = '');
+    ids.forEach(id => document.getElementById(id).value = ''); 
 }
 
 // Function to update the display of the current trip name
